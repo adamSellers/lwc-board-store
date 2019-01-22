@@ -1,3 +1,6 @@
 .sfdx
 .vscode
-images
+
+# don't push the stuff that come from the source:pull we don't want
+/force-app/main/default/profiles
+/force-app/main/default/settings

@@ -19,15 +19,16 @@ Push the source
 sfdx force:source:push
 ````
 
-Add the data
-````
-TODO - add data commands here
-````
-
 Update the permissions
 ````
-sfdx force:user:permset:assign -n boardStore
+sfdx force:user:permset:assign -n board_admin
 ````
+
+Add the data
+````
+sfdx force:data:tree:import --plan boardData/board-export-Board__c-plan.json
+````
+
 
 Open the org and enjoy
 ````

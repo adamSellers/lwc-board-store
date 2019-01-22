@@ -1,0 +1,10 @@
+[
+    {
+        "sobject": "Board__c",
+        "saveRefs": true,
+        "resolveRefs": false,
+        "files": [
+            "board-export-Board__cs.json"
+        ]
+    }
+]
