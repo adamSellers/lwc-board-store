@@ -6,7 +6,7 @@ To build, do the following:-
 
 First, grab the repo:
 ````
-git clone git@github.com:adamSellers/lwc-board-store.git && cd lwc-board-store
+git clone https://github.com/adamSellers/lwc-board-store.git && cd lwc-board-store
 ````
 
 Next, create yourself a shiny new scratch org in Salesforce DX
