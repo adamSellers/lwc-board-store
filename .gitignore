@@ -4,3 +4,8 @@
 # don't push the stuff that come from the source:pull we don't want
 /force-app/main/default/profiles
 /force-app/main/default/settings
+
+# remove this later, for the examples
+/force-app/main/default/lwc/helloBinding
+/force-app/main/default/lwc/progressBarComponent
+/force-app/main/default/lwc/progressBar
