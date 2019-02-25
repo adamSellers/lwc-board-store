@@ -20,6 +20,9 @@
             ],
             "c/pubsub": [
                 "pubsub/pubsub.js"
+            ],
+            "c/board-paginator": [
+                "boardPaginator/boardPaginator.js"
             ]
         }
     },

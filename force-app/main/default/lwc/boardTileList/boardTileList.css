@@ -17,6 +17,6 @@ c-board-tile {
   flex: 1;
 }
 
-/* c-paginator {
+c-board-paginator {
   display: block;
-} */
+}

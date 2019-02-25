@@ -40,10 +40,6 @@ export default class BoardTile extends LightningElement {
   @track name;
   @track price;
 
-  connectedCallback() {
-    console.log('this thing mounted with data: ' + JSON.stringify(this._board));
-  }
-
   hanldeBoardSelected() {
     /* emit a custom event that identifies the record clicked on */
     const selectedBoard = new CustomEvent('selected', {

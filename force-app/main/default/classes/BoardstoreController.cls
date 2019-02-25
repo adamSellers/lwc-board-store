@@ -40,12 +40,13 @@ public with sharing class BoardstoreController {
         }
 
         String dbQuery = 'SELECT Id, Name, Ability_Level__c, Base__c, Board_Notes__c, Camber__c, Core__c, Description__c, Flex__c, Image_Name__c, Mounting_Pattern__c, Price__c, Shape__c, Sidecut__c, Sidewall__c, Size__c, Snowboard_Type__c, Stance_Setback__c, Width__c from Board__c ' + whereClause + ' ORDER BY Name LIMIT :pageSize OFFSET :offset';
+        String countQuery = 'SELECT count() from Board__c ' + whereClause;
         Integer pageSize = BoardstoreController.PAGE_SIZE;
         Integer offset = (pageNumber - 1) * pageSize;
         PagedResult result = new PagedResult();
         result.pageSize = pageSize;
         result.pageNumber = pageNumber;
-        result.totalItemCount = Database.countQuery('SELECT count() from Board__c ' + whereClause);
+        result.totalItemCount = Database.countQuery(countQuery);
         result.records = Database.query(dbQuery);
         return result;
     }

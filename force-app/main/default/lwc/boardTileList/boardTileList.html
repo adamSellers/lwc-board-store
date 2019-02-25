@@ -11,14 +11,8 @@
               class="slds-m-around_small"></c-board-tile>
           </template>
         </div>
-        paginator
-        <!-- <c-paginator
-          page-number={pageNumber}
-          page-size={boards.data.pageSize}
-          total-item-count={products.data.totalItemCount}
-          onprevious={handlePreviousPage}
-          onnext={handleNextPage}
-          ></c-paginator> -->
+        <c-board-paginator page-number={pageNumber} page-size={boards.data.pageSize} total-item-count={boards.data.totalItemCount}
+          onprevious={handlePreviousPage} onnext={handleNextPage}></c-board-paginator>
       </template>
       <template if:false={boards.data.records.length}>
         stuff is false
