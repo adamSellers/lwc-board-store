@@ -13,7 +13,7 @@ private class BoardStoreContollerTest {
         insert testBoards;
 
         // now assert there were 100 snowboards added
-        List<Board__c> boardsToTest = BoardstoreController.getBoards();
-        System.assertEquals(100, boardsToTest.size());
+        PagedResult boardsToTest = BoardstoreController.getBoards('{}', 1);
+        System.assertEquals(9, boardsToTest.records.size());
     }
 }

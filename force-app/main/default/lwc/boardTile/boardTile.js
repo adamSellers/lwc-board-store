@@ -1,6 +1,7 @@
 /**************************************************************
  * The boardTile is the view of a single board, this is dispalyed
- * in the boardTileList component. This exposes the add to cart functionality.
+ * in the boardTileList component. A click on this fires an event to the board detail tile
+ * which in turn, will expose the add to cart functionality.
  * All properties in this component must be passed in from the containing component.
  * V0.01
  * 25th Feb 2019
@@ -12,6 +13,8 @@ import {
   api,
   track
 } from 'lwc';
+/* grab the images from static resources */
+import boardImages from '@salesforce/resourceUrl/boardImages';
 
 export default class BoardTile extends LightningElement {
   /* Is the single tile draggable */
@@ -26,7 +29,8 @@ export default class BoardTile extends LightningElement {
 
   set board(value) {
     this._board = value;
-    this.pictureUrl = value.Board_Thumbnail__c;
+    this.imageName = value.Image_Name__c;
+    this.thumbUrl = boardImages + '/images/thumbs80/' + this.imageName;
     this.name = value.Name;
     this.price = value.Price__c;
   }
@@ -40,7 +44,7 @@ export default class BoardTile extends LightningElement {
     console.log('this thing mounted with data: ' + JSON.stringify(this._board));
   }
 
-  handleClick() {
+  hanldeBoardSelected() {
     /* emit a custom event that identifies the record clicked on */
     const selectedBoard = new CustomEvent('selected', {
       detail: this.board.Id

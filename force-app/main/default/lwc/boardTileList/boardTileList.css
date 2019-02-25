@@ -12,7 +12,7 @@
   flex-wrap: wrap;
 }
 
-c-product-tile {
+c-board-tile {
   min-width: 200px;
   flex: 1;
 }
