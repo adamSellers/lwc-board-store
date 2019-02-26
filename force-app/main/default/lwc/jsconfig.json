@@ -3,8 +3,14 @@
         "experimentalDecorators": true,
         "baseUrl": ".",
         "paths": {
+            "c/board-card": [
+                "boardCard/boardCard.js"
+            ],
             "c/board-filters": [
                 "boardFilters/boardFilters.js"
+            ],
+            "c/board-paginator": [
+                "boardPaginator/boardPaginator.js"
             ],
             "c/board-shopping-cart": [
                 "boardShoppingCart/boardShoppingCart.js"
@@ -20,12 +26,6 @@
             ],
             "c/pubsub": [
                 "pubsub/pubsub.js"
-            ],
-            "c/board-paginator": [
-                "boardPaginator/boardPaginator.js"
-            ],
-            "c/board-card": [
-                "boardCard/boardCard.js"
             ]
         }
     },
