@@ -23,6 +23,9 @@
             ],
             "c/board-paginator": [
                 "boardPaginator/boardPaginator.js"
+            ],
+            "c/board-card": [
+                "boardCard/boardCard.js"
             ]
         }
     },
