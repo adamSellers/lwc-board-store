@@ -1,0 +1,51 @@
+<template>
+  <lightning-card icon-name="standard:apex_plugin">
+    <template if:true={board.data}>
+      <span slot="title">{board.data.fields.Name.value}</span>
+      <lightning-button-icon icon-name="utility:expand_alt" slot="actions" onclick={handleNavigateToRecord}></lightning-button-icon>
+      <div class="slds-m-horizontal_medium">
+        <img src={boardImageUrl} class="board slds-align_absolute-center" alt="Board Image" />
+        <div class="row">
+          <div>Level:</div>
+          <div>{board.data.fields.Ability_Level__c.value}</div>
+        </div>
+        <div class="row">
+          <div>Camber:</div>
+          <div>{board.data.fields.Camber__c.value}</div>
+        </div>
+        <div class="row">
+          <div>Size:</div>
+          <div>{board.data.fields.Size__c.value}</div>
+        </div>
+        <div class="row">
+          <div>Type:</div>
+          <div>{board.data.fields.Snowboard_Type__c.value}</div>
+        </div>
+        <div class="row">
+          <div>Price:</div>
+          <div>
+            <lightning-formatted-number format-style="currency" currency-code="AUD" value={board.data.fields.Price__c.value}
+              class="price"></lightning-formatted-number>
+          </div>
+        </div>
+        <section>Board Description</section>
+        <div class="row">
+          {board.data.fields.Description__c.value}
+        </div>
+      </div>
+    </template>
+
+    <template if:true={noData}>
+      placeholder message
+      <!-- <c-placeholder
+        message="Select a board to see the details">
+      </c-placeholder> -->
+    </template>
+    <template if:true={board.error}>
+      this is an error
+      <!-- <c-inline-message
+        errors={board.error}>
+      </c-inline-message> -->
+    </template>
+  </lightning-card>
+</template>

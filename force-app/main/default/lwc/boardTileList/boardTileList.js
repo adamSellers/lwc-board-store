@@ -63,8 +63,7 @@ export default class BoardTileList extends LightningElement {
   }
 
   handleBoardSelected(event) {
-    console.log('board selected is: ' + JSON.stringify(event.detail));
-    fireEvent(this.pageRef, 'boardselected', event.detail);
+    fireEvent(this.pageRef, 'boardSelected', event.detail);
   }
 
   disconnectedCallback() {

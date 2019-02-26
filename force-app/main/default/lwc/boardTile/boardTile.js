@@ -40,7 +40,7 @@ export default class BoardTile extends LightningElement {
   @track name;
   @track price;
 
-  hanldeBoardSelected() {
+  handleBoardSelected() {
     /* emit a custom event that identifies the record clicked on */
     const selectedBoard = new CustomEvent('selected', {
       detail: this.board.Id
