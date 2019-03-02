@@ -24,6 +24,9 @@
             "c/board-tile-list": [
                 "boardTileList/boardTileList.js"
             ],
+            "c/placeholder": [
+                "placeholder/placeholder.js"
+            ],
             "c/pubsub": [
                 "pubsub/pubsub.js"
             ]

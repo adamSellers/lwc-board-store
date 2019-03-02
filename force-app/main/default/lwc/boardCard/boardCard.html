@@ -36,10 +36,8 @@
     </template>
 
     <template if:true={noData}>
-      placeholder message
-      <!-- <c-placeholder
-        message="Select a board to see the details">
-      </c-placeholder> -->
+      <c-placeholder message="Select a board to see the details">
+      </c-placeholder>
     </template>
     <template if:true={board.error}>
       this is an error

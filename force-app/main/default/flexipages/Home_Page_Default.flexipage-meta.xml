@@ -32,7 +32,7 @@
     </flexiPageRegions>
     <flexiPageRegions>
         <componentInstances>
-            <componentName>home:assistant</componentName>
+            <componentName>boardCard</componentName>
         </componentInstances>
         <mode>Replace</mode>
         <name>sidebar</name>
