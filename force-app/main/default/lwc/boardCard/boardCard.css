@@ -11,6 +11,11 @@ img.board {
   width: 80px;
 }
 
+.cart-button {
+  height: 35px;
+  padding-top: 5px;
+}
+
 .row div:nth-child(2) {
   flex: 1
 }

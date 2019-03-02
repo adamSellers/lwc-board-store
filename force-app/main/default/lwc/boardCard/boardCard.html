@@ -28,6 +28,9 @@
               class="price"></lightning-formatted-number>
           </div>
         </div>
+        <div class="slds-align_absolute-center">
+          <img class="cart-button" src={addToCartButtonUrl} alt="Add to Cart" onclick={handleAddToCart} />
+        </div>
         <section>Board Description</section>
         <div class="row">
           {board.data.fields.Description__c.value}

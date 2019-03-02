@@ -63,10 +63,6 @@ export default class BoardCard extends LightningElement {
     registerListener('boardSelected', this.handleBoardSelected, this);
   }
 
-  renderedCallback() {
-    console.log('the name field object: ' + JSON.stringify(IMAGE_NAME_FIELD.fieldApiName));
-  }
-
   /** unregister the listener upon component destruction */
   disconnectedCallback() {
     unregisterAllListeners(this);
@@ -94,6 +90,10 @@ export default class BoardCard extends LightningElement {
     });
   }
 
+  handleAddToCart() {
+    console.log('the add to cart button was pressed: ' + this.recordId);
+  }
+
   get noData() {
     return !this.board.error && !this.board.data;
   }
@@ -102,5 +102,10 @@ export default class BoardCard extends LightningElement {
   get boardImageUrl() {
     let imgUrl = BOARD_IMAGES + '/images/thumbs200/' + this.board.data.fields.Image_Name__c.value;
     return imgUrl;
+  }
+
+  get addToCartButtonUrl() {
+    let addToCartUrl = BOARD_IMAGES + '/addToCart.png';
+    return addToCartUrl;
   }
 }
