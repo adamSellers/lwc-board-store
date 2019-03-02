@@ -1,7 +1,7 @@
 <template>
   <div class="slds-card slds-p-around_x-small">
     <template if:true={searchBarIsVisible}>
-      <lightning-input label="Search Key" type="text" onchange={handleSearchKeyChange} class="search-bar"></lightning-input>
+      <lightning-input label="Enter Brand Name" type="text" onchange={handleSearchKeyChange} class="search-bar"></lightning-input>
     </template>
     <template if:true={boards.data}>
       <template if:true={boards.data.records.length}>

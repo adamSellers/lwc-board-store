@@ -29,7 +29,7 @@ import {
 
 export default class BoardTileList extends LightningElement {
   // for a searchbar
-  @api searchBarIsVisible = false;
+  @api searchBarIsVisible;
 
   // are tile draggable? 
   @api tilesAreDraggable = false;

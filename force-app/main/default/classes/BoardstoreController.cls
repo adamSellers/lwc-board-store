@@ -27,7 +27,7 @@ public with sharing class BoardstoreController {
             maxPrice = productFilters.maxPrice;
             if(!String.isEmpty(productFilters.searchKey)) {
                 searchString = '%' + productFilters.searchKey + '%';
-                criteria.add('Name LIKE :key');
+                criteria.add('Name LIKE :searchString');
             }
             // we want shape, camber, width and flex
             if(productFilters.maxPrice >= 0) {

@@ -5,4 +5,9 @@
     <targets>
         <target>lightning__HomePage</target>    
     </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__HomePage">
+            <property name="searchBarIsVisible" type="Boolean"></property>
+        </targetConfig>
+    </targetConfigs>
 </LightningComponentBundle>
