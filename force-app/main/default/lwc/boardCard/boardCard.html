@@ -39,7 +39,8 @@
     </template>
 
     <template if:true={noData}>
-      <c-placeholder message="Select a board to see the details">
+      <span slot="title">Please select a board</span>
+      <c-placeholder>
       </c-placeholder>
     </template>
     <template if:true={board.error}>

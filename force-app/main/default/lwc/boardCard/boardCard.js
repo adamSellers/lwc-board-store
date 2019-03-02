@@ -45,7 +45,7 @@ const fields = [
 ]
 
 /** Component to display the fields of Board__c */
-export default class BoardCard extends LightningElement {
+export default class BoardCard extends NavigationMixin(LightningElement) {
   /** Id of the board */
   recordId;
 
