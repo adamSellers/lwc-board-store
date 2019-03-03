@@ -79,8 +79,41 @@ export default class BoardFilters extends LightningElement {
     this.delayedFireFilterChangeEvent();
   }
 
-  handleCheckBoxChange() {
-    console.log('a checkbox was changed');
+  handleCheckBoxChange(event) {
+    if (!this.filters.camber) {
+      /** so we have no filters set just yet, initialise all with all values set.
+       * The all values set is found from the 'checked' attribute on the html, ie
+       * all checkboxes are rendered as checked initially
+       */
+      this.filters.camber = this.cambers.data.values.map(
+        item => item.value
+      );
+
+      this.filters.flex = this.flexes.data.values.map(
+        item => item.value
+      );
+
+      this.filters.width = this.widths.data.values.map(
+        item => item.value
+      );
+
+      this.filters.mountingPattern = this.mountingPatterns.data.values.map(
+        item => item.value
+      );
+    }
+    const value = event.target.dataset.value;
+    const filterArray = this.filters[event.target.dataset.filter];
+    if (event.target.checked) {
+      if (!filterArray.includes(value)) {
+        filterArray.push(value);
+      }
+    } else {
+      this.filters[event.target.dataset.filter] = filterArray.filter(
+        item => item !== value
+      );
+    }
+    /** fire the event that sends the filters to the apex controller */
+    fireEvent(this.pageRef, 'filterChange', this.filters);
   }
 
   delayedFireFilterChangeEvent() {
@@ -92,10 +125,5 @@ export default class BoardFilters extends LightningElement {
     this.delayTimeout = setTimeout(() => {
       fireEvent(this.pageRef, 'filterChange', this.filters);
     }, DELAY);
-  }
-
-  renderedCallback() {
-    this.times++
-    console.log('this has been rendered ' + this.times + ' times.');
   }
 }
