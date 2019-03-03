@@ -8,11 +8,13 @@ public with sharing class BoardstoreController {
 
         public Decimal maxPrice { get; set; }
 
-        public String[] categories { get; set; }
+        public String[] width { get; set; }
 
-        public String[] materials { get; set; }
+        public String[] flex { get; set; }
 
-        public String[] levels { get; set; }
+        public String[] camber { get; set; }
+
+        public String[] mountingPattern { get; set; }
     }
 
     @AuraEnabled(Cacheable=true)
@@ -21,7 +23,7 @@ public with sharing class BoardstoreController {
         System.debug('the pageNumber is: ' + pageNumber);
         String searchString, whereClause = '';
         Decimal maxPrice;
-        String[] categories, materials, levels, criteria = new String[]{};
+        String[] width, flex, camber, mountingPattern, criteria = new String[]{};
         if(!String.isEmpty(filters)) {
             Filters productFilters = (Filters) JSON.deserializeStrict(filters, BoardstoreController.Filters.class);
             maxPrice = productFilters.maxPrice;
@@ -34,8 +36,21 @@ public with sharing class BoardstoreController {
                 maxPrice = productFilters.maxPrice;
                 criteria.add('Price__c <= :maxPrice');
             }
+            if(productFilters.width != NULL) {
+                width = productFilters.width;
+                criteria.add('Width__c IN :width');
+            }if(productFilters.flex != NULL) {
+                flex = productFilters.flex;
+                criteria.add('Flex__c IN :flex');
+            }if(productFilters.camber != NULL) {
+                camber = productFilters.camber;
+                criteria.add('Camber__c IN :camber');
+            }if(productFilters.mountingPattern != NULL) {
+                mountingPattern = productFilters.mountingPattern;
+                criteria.add('Mounting_Pattern__c IN :mountingPattern');
+            }
             if(criteria.size() > 0 ) {
-                whereClause = 'WHERE ' + String.join(criteria, 'AND');
+                whereClause = 'WHERE ' + String.join(criteria, ' AND ');
             }
         }
 
@@ -46,6 +61,7 @@ public with sharing class BoardstoreController {
         PagedResult result = new PagedResult();
         result.pageSize = pageSize;
         result.pageNumber = pageNumber;
+        System.debug('count query is: ' + countQuery);
         result.totalItemCount = Database.countQuery(countQuery);
         result.records = Database.query(dbQuery);
         return result;
