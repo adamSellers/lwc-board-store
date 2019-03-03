@@ -4,7 +4,7 @@
       <span slot="title">{board.data.fields.Name.value}</span>
       <lightning-button-icon icon-name="utility:expand_alt" slot="actions" onclick={handleNavigateToRecord}></lightning-button-icon>
       <div class="slds-m-horizontal_medium">
-        <img src={boardImageUrl} class="board slds-align_absolute-center" alt="Board Image" />
+        <img src={boardImageUrl} class="board slds-align_absolute-center" alt="Board Image" onclick={handleNavigateToRecord} />
         <div class="row">
           <div>Level:</div>
           <div>{board.data.fields.Ability_Level__c.value}</div>
