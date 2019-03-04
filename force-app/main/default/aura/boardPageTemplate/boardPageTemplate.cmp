@@ -1,0 +1,21 @@
+<aura:component implements="lightning:appHomeTemplate" description="Board Store page template" access="global">
+
+  <aura:attribute name="left" type="Aura.Component[]" access="global" />
+  <aura:attribute name="bottom" type="Aura.Component[]" access="global" />
+  <aura:attribute name="right" type="Aura.Component[]" access="global" />
+
+  <div aura:id="container">
+    <lightning:layout horizontalAlign="spread" pullToBoundary="small" multipleRows="true">
+      <lightning:layoutItem aura:id="leftColumn" size="8" padding="around-small">
+        {!v.left}
+      </lightning:layoutItem>
+      <lightning:layoutItem aura:id="rightColumn" padding="around-small" size="4">
+        {!v.right}
+      </lightning:layoutItem>
+      <lightning:layoutItem aura:id="bottomRow" size="12" padding="around-small">
+        {!v.bottom}
+      </lightning:layoutItem>
+    </lightning:layout>
+  </div>
+
+</aura:component>

@@ -9,7 +9,8 @@
  */
 import {
   LightningElement,
-  wire
+  wire,
+  track
 } from 'lwc';
 import {
   CurrentPageReference
@@ -32,13 +33,13 @@ const DELAY = 350;
 
 /** Displays a filter panel to search for Board__c records */
 export default class BoardFilters extends LightningElement {
-  searchKey = '';
-  maxPrice = 2000;
+  @track searchKey = 'Please Enter a search string';
+  @track maxPrice = 1000;
   times = 0;
 
   filters = {
     searchKey: '',
-    maxPrice: 2000
+    maxPrice: 1000
   };
 
   @wire(CurrentPageReference)
@@ -68,6 +69,10 @@ export default class BoardFilters extends LightningElement {
   })
   flexes;
 
+  handleResetFilters() {
+    this.initialiseFilters(true);
+  }
+
   handleSearchKeyChange(event) {
     const key = event.target.value;
     this.filters.searchKey = key;
@@ -82,24 +87,8 @@ export default class BoardFilters extends LightningElement {
   handleCheckBoxChange(event) {
     if (!this.filters.camber) {
       /** so we have no filters set just yet, initialise all with all values set.
-       * The all values set is found from the 'checked' attribute on the html, ie
-       * all checkboxes are rendered as checked initially
        */
-      this.filters.camber = this.cambers.data.values.map(
-        item => item.value
-      );
-
-      this.filters.flex = this.flexes.data.values.map(
-        item => item.value
-      );
-
-      this.filters.width = this.widths.data.values.map(
-        item => item.value
-      );
-
-      this.filters.mountingPattern = this.mountingPatterns.data.values.map(
-        item => item.value
-      );
+      this.initialiseFilters(false);
     }
     const value = event.target.dataset.value;
     const filterArray = this.filters[event.target.dataset.filter];
@@ -125,5 +114,36 @@ export default class BoardFilters extends LightningElement {
     this.delayTimeout = setTimeout(() => {
       fireEvent(this.pageRef, 'filterChange', this.filters);
     }, DELAY);
+  }
+
+  initialiseFilters(fullReset) {
+    /** check to see if we want search and price reset
+     * or if this is a call from the initalisation
+     */
+    if (fullReset) {
+      this.filters.searchKey = '';
+      this.searchKey = '';
+      this.maxPrice = 1000;
+      this.filters.maxPrice = 1000;
+      console.log('full reset done - serach key is now: ' + this.searchKey);
+    }
+    this.filters.camber = this.cambers.data.values.map(
+      item => item.value
+    );
+
+    this.filters.flex = this.flexes.data.values.map(
+      item => item.value
+    );
+
+    this.filters.width = this.widths.data.values.map(
+      item => item.value
+    );
+
+    this.filters.mountingPattern = this.mountingPatterns.data.values.map(
+      item => item.value
+    );
+
+    /** fire the event that sends the filters to the apex controller */
+    fireEvent(this.pageRef, 'filterChange', this.filters);
   }
 }

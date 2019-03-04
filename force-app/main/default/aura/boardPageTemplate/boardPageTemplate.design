@@ -1,0 +1,7 @@
+<design:component label="Two columns with bottom row: 8 4 | 12">
+  <flexipage:template>
+    <flexipage:region name="left" defaultWidth="LARGE" />
+    <flexipage:region name="bottom" defaultWidth="LARGE" />
+    <flexipage:region name="right" defaultWidth="SMALL" />
+  </flexipage:template>
+</design:component>
