@@ -1,0 +1,9 @@
+<template>
+  <lightning-layout horizontal-align="space" pull-to-boundary="small">
+    <template if:true={cartHeader}>
+      <lightning-layout-item size=12 padding="horizontal-small">
+        {cartHeader.Name}
+      </lightning-layout-item>
+    </template>
+  </lightning-layout>
+</template>

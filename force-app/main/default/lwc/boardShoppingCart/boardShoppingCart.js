@@ -44,13 +44,11 @@ import CART_HEADER_FIELD from '@salesforce/schema/Boardstore_Cart_Line__c.Boards
 /** Import pubsub mechanism */
 import {
   unregisterAllListeners,
-  registerListener,
-  fireEvent
+  registerListener
 } from 'c/pubsub';
 export default class BoardShoppingCart extends LightningElement {
   @track userId = Id;
-  @track cartLines = [];
-  @track cartHeader;
+  @track cartResult;
   times = 0;
 
   @wire(CurrentPageReference) pageRef;
@@ -67,11 +65,10 @@ export default class BoardShoppingCart extends LightningElement {
         userId: this.userId
       })
       .then((result) => {
-        this.cartHeader = result[0];
-        this.logOutStuff(this.cartHeader, 'cartHeader returned with: ');
+        this.cartResult = result;
       })
       .catch(error => {
-        console.error('error! it threw this: ' + error);
+        this.error = error;
       });
 
     /** register the event listener also */
@@ -89,7 +86,7 @@ export default class BoardShoppingCart extends LightningElement {
     fields[BOARD_FIELD.fieldApiName] = lineDetails.boardId;
     fields[QUANTITY_FIELD.fieldApiName] = lineDetails.quantity;
     fields[PRICE_FIELD.fieldApiName] = lineDetails.price;
-    fields[CART_HEADER_FIELD.fieldApiName] = this.cartHeader.Id;
+    fields[CART_HEADER_FIELD.fieldApiName] = this.cartResult.cartHeader.Id;
     let recordInput = {
       apiName: CART_LINE_OBJECT.objectApiName,
       fields
@@ -115,7 +112,6 @@ export default class BoardShoppingCart extends LightningElement {
           })
         );
       });
-
   }
 
   /** stuff used for debugging and console logging */
@@ -127,7 +123,7 @@ export default class BoardShoppingCart extends LightningElement {
     this.times++;
     console.log('render callback called this... ' + this.times);
     this.logOutStuff(this.userId, 'The user ID is: ');
-    this.logOutStuff(this.cartHeader, 'The cart header is: ');
+    this.logOutStuff(this.cartResult, 'The cart result is: ');
   }
   /************** END DEBUGGING *****************************/
 }

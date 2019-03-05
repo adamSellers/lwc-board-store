@@ -1,0 +1,7 @@
+<template>
+  <template if:true={boardCartLines}>
+    <template for:each={boardCartLines} for:item="line">
+      <c-board-shopping-cart-line cart-line={line} key={line.Id}></c-board-shopping-cart-line>
+    </template>
+  </template>
+</template>

@@ -1,6 +1,6 @@
 public with sharing class BoardCartController {
     @AuraEnabled
-    public static List<Boardstore_Cart__c> getCartHeader(String userId){
+    public static BoardCartResult getCartHeader(String userId){
         // this method takes the user id and returns either
         // the current open Cart Header record or, if no open carts
         // exist, creates a new one and returns that. 
@@ -31,6 +31,16 @@ public with sharing class BoardCartController {
                             AND  Cart_Status__c = 'Open'
                             LIMIT 1];
         } 
-        return currentCarts;
+        // create a new instance of the BoardCartResult object
+        BoardCartResult cartResult = new BoardCartResult();
+        cartResult.cartHeader = currentCarts[0];
+        
+        // now check all the lines in that cart
+        cartResult.cartLines = [SELECT Id, Name, Board__r.Name, Price__c, Quantity__c
+                                FROM Boardstore_Cart_Line__c
+                                WHERE Boardstore_Cart__c =: cartResult.cartHeader.Id];
+
+        return cartResult;
+
     }
 }

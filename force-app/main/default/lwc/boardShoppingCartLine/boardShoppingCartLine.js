@@ -18,15 +18,4 @@ export default class BoardShoppingCartLine extends LightningElement {
     this.subtotal = value.Subtotal__c;
     this.boardName = value.Board__r.Name;
   }
-
-
-
-  /** handle some events here */
-  handleDeleteEvent() {
-    console.log('delete event clicked');
-  }
-
-  handleUpdateEvent() {
-    console.log('update event clicked');
-  }
 }

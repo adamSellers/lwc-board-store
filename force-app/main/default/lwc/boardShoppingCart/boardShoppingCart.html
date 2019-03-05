@@ -1,9 +1,12 @@
 <template>
   <lightning-card title="Cart" icon-name="utility:cart">
-    <template if:true={cartHeader}>
-      <div>
-        Let's add a name: {cartHeader.Name}
-      </div>
+    <template if:true={cartResult}>
+      <c-board-cart-header cart-header={cartResult.cartHeader}></c-board-cart-header>
+    </template>
+    <template if:true={cartResult}>
+      <template for:each={cartResult.cartLines} for:item="line">
+        <c-board-shopping-cart-line cart-line={line} key={line.Id}></c-board-shopping-cart-line>
+      </template>
     </template>
   </lightning-card>
 </template>
