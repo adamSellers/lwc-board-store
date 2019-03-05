@@ -15,7 +15,7 @@ export default class BoardShoppingCartLine extends LightningElement {
     this._cartLine = value;
     this.price = value.Price__c;
     this.quantity = value.Quantity__c;
-    this.subtotal = value.Subtotal__c;
+    this.subtotal = this.price * this.quantity;
     this.boardName = value.Board__r.Name;
   }
 }

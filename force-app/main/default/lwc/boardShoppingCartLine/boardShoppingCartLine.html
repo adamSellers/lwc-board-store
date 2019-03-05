@@ -1,7 +1,16 @@
 <template>
-  <lightning-layout horizontal-align="spread" pull-to-boundary="x-small">
-    <lightning-layout-item padding="x-small" size="12">
-      Board Name is: {boardName}
+  <lightning-layout horizontal-align="spread" pull-to-boundary="small" multiple-rows>
+    <lightning-layout-item size="6" padding="horizontal-small">
+      {boardName}
+    </lightning-layout-item>
+    <lightning-layout-item size="2" class="slds-align_absolute-center">
+      {quantity}
+    </lightning-layout-item>
+    <lightning-layout-item size="2" class="slds-align_absolute-center">
+      {price}
+    </lightning-layout-item>
+    <lightning-layout-item size="2" class="slds-align_absolute-center" padding="horizontal-small">
+      {subtotal}
     </lightning-layout-item>
   </lightning-layout>
 </template>
