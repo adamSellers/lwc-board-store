@@ -15,7 +15,8 @@ import {
 /* pub/sub mechanism for sibling component comms */
 import {
   registerListener,
-  unregisterAllListeners
+  unregisterAllListeners,
+  fireEvent
 } from 'c/pubsub';
 
 /** Import the schema from Board__c as required */
@@ -91,7 +92,13 @@ export default class BoardCard extends NavigationMixin(LightningElement) {
   }
 
   handleAddToCart() {
-    console.log('the add to cart button was pressed: ' + this.recordId);
+    let boardDetails = {
+      boardId: this.recordId,
+      price: this.board.data.fields.Price__c.value,
+      quantity: 1
+    }
+    /** fire an event for the shopping cart */
+    fireEvent(this.pageRef, 'boardAddedToCart', boardDetails);
   }
 
   get noData() {

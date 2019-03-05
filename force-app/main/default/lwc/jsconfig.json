@@ -32,6 +32,9 @@
             ],
             "c/picklist-component": [
                 "picklistComponent/picklistComponent.js"
+            ],
+            "c/board-shopping-cart-line": [
+                "boardShoppingCartLine/boardShoppingCartLine.js"
             ]
         }
     },

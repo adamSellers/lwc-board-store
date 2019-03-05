@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Items__c</fullName>
+    <description>This is the count of the number of items in the cart</description>
+    <externalId>false</externalId>
+    <label>Total Items</label>
+    <summaryForeignKey>Boardstore_Cart_Line__c.Boardstore_Cart__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>
