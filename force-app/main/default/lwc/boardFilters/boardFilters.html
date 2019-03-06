@@ -1,57 +1,61 @@
 <template>
   <lightning-card title="Filters" icon-name="standard:calibration">
     <lightning-button-icon icon-name="action:close" slot="actions" onclick={handleResetFilters}></lightning-button-icon>
-    <div class="slds-m-horizontal_medium">
-      <lightning-input label="Search Key" type="search" onchange={handleSearchKeyChange}></lightning-input>
-      <section>
-        <lightning-slider label="Max Price" step="50" min="0" max="1000" value={maxPrice} onchange={handleMaxPriceChange}></lightning-slider>
-      </section>
-      <lightning-layout horizontal-align="spread" pull-to-boundary="small" multiple-rows="true">
-        <lightning-layout-item size="6" padding="horizontal-small">
-          <section>
-            <h1>Camber</h1>
-            <template if:true={cambers.data}>
-              <template for:each={cambers.data.values} for:item="camber">
-                <lightning-input key={camber.value} label={camber.label} data-filter="camber" data-value={camber.value}
-                  type="checkbox" checked onchange={handleCheckBoxChange}></lightning-input>
-              </template>
+    <lightning-layout horizontal-align="spread" multiple-rows="true">
+      <lightning-layout-item size="12">
+        <lightning-layout>
+          <lightning-layout-item flexibility="auto" size="6" padding="horizontal-small">
+            <lightning-input label="Search Key" type="search" onchange={handleSearchKeyChange}></lightning-input>
+          </lightning-layout-item>
+          <lightning-layout-item flexibility="auto" size="6" padding="horizontal-small">
+            <lightning-slider label="Max Price" step="50" min="0" max="1000" value={maxPrice} onchange={handleMaxPriceChange}></lightning-slider>
+          </lightning-layout-item>
+        </lightning-layout>
+      </lightning-layout-item>
+      <lightning-layout-item size="6" medium-device-size="3" padding="horizontal-small">
+        <section>
+          <h1>Camber</h1>
+          <template if:true={cambers.data}>
+            <template for:each={cambers.data.values} for:item="camber">
+              <lightning-input key={camber.value} label={camber.label} data-filter="camber" data-value={camber.value}
+                type="checkbox" checked onchange={handleCheckBoxChange}></lightning-input>
             </template>
-          </section>
-        </lightning-layout-item>
-        <lightning-layout-item size="6" padding="horizontal-small">
-          <section>
-            <h1>Moutning</h1>
-            <template if:true={mountingPatterns.data}>
-              <template for:each={mountingPatterns.data.values} for:item="mountingPattern">
-                <lightning-input key={mountingPattern.value} label={mountingPattern.label} data-filter="mountingPattern"
-                  data-value={mountingPattern.value} type="checkbox" checked onchange={handleCheckBoxChange}></lightning-input>
-              </template>
+          </template>
+        </section>
+      </lightning-layout-item>
+      <lightning-layout-item size="6" medium-device-size="3" padding="horizontal-small">
+        <section>
+          <h1>Moutning</h1>
+          <template if:true={mountingPatterns.data}>
+            <template for:each={mountingPatterns.data.values} for:item="mountingPattern">
+              <lightning-input key={mountingPattern.value} label={mountingPattern.label} data-filter="mountingPattern"
+                data-value={mountingPattern.value} type="checkbox" checked onchange={handleCheckBoxChange}></lightning-input>
             </template>
-          </section>
-        </lightning-layout-item>
-        <lightning-layout-item size="6" padding="horizontal-small">
-          <section>
-            <h1>Width</h1>
-            <template if:true={widths.data}>
-              <template for:each={widths.data.values} for:item="width">
-                <lightning-input key={width.value} label={width.label} data-filter="width" data-value={width.value}
-                  type="checkbox" checked onchange={handleCheckBoxChange}></lightning-input>
-              </template>
+          </template>
+        </section>
+      </lightning-layout-item>
+      <lightning-layout-item size="6" medium-device-size="3" padding="horizontal-small">
+        <section>
+          <h1>Width</h1>
+          <template if:true={widths.data}>
+            <template for:each={widths.data.values} for:item="width">
+              <lightning-input key={width.value} label={width.label} data-filter="width" data-value={width.value} type="checkbox"
+                checked onchange={handleCheckBoxChange}></lightning-input>
             </template>
-          </section>
-        </lightning-layout-item>
-        <lightning-layout-item size="6" padding="horizontal-small">
-          <section>
-            <h1>FLex</h1>
-            <template if:true={flexes.data}>
-              <template for:each={flexes.data.values} for:item="flex">
-                <lightning-input key={flex.value} label={flex.label} data-filter="flex" data-value={flex.value} type="checkbox"
-                  checked onchange={handleCheckBoxChange}></lightning-input>
-              </template>
+          </template>
+        </section>
+      </lightning-layout-item>
+      <lightning-layout-item size="6" medium-device-size="3" padding="horizontal-small">
+        <section>
+          <h1>FLex</h1>
+          <template if:true={flexes.data}>
+            <template for:each={flexes.data.values} for:item="flex">
+              <lightning-input key={flex.value} label={flex.label} data-filter="flex" data-value={flex.value} type="checkbox"
+                checked onchange={handleCheckBoxChange}></lightning-input>
             </template>
-          </section>
-        </lightning-layout-item>
-      </lightning-layout>
-    </div>
+          </template>
+        </section>
+      </lightning-layout-item>
+    </lightning-layout>
   </lightning-card>
 </template>
