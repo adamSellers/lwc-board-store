@@ -18,7 +18,7 @@
             </lightning-layout-item>
           </lightning-layout>
           <template for:each={cartResult.cartLines} for:item="line">
-            <c-board-shopping-cart-line cart-line={line} key={line.Id}></c-board-shopping-cart-line>
+            <c-board-shopping-cart-line cart-line={line} key={line.Id} ondeleteline={handleDeleteLine}></c-board-shopping-cart-line>
           </template>
         </template>
       </lightning-layout-item>

@@ -18,4 +18,14 @@ export default class BoardShoppingCartLine extends LightningElement {
     this.subtotal = this.price * this.quantity;
     this.boardName = value.Board__r.Name;
   }
+
+  handleDeleteCartLine() {
+    /** we just bubble a custom event to the cart component to deal with this */
+    console.log('we recorded the click at least');
+    const deleteEvent = new CustomEvent('deleteline', {
+      detail: this._cartLine.Id
+    });
+
+    this.dispatchEvent(deleteEvent);
+  }
 }

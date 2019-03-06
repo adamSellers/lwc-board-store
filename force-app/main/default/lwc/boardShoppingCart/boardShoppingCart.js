@@ -19,17 +19,15 @@ import {
 
 /** Import the UI API functions needed */
 import {
-  createRecord
+  createRecord,
+  deleteRecord
 } from 'lightning/uiRecordApi';
-
 import {
   CurrentPageReference
 } from 'lightning/navigation';
-
 import {
   ShowToastEvent
 } from 'lightning/platformShowToastEvent';
-
 /** get the current user's ID */
 import Id from '@salesforce/user/Id';
 
@@ -61,16 +59,7 @@ export default class BoardShoppingCart extends LightningElement {
     /** using imperative apex call, so have to do on connected 
      * callback as an init.
      */
-    getCartHeader({
-        userId: this.userId
-      })
-      .then((result) => {
-        this.cartResult = result;
-      })
-      .catch(error => {
-        this.error = error;
-      });
-
+    this.performImperativeApexRefresh();
     /** register the event listener also */
     registerListener('boardAddedToCart', this.receiveAddToCart, this);
   }
@@ -101,12 +90,14 @@ export default class BoardShoppingCart extends LightningElement {
             variant: 'success',
             message: cartLine.fields.Board__r.displayValue + ' added to the cart.'
           })
-        )
+        );
+        /** refresh the cart lines */
+        this.performImperativeApexRefresh();
       })
       .catch(error => {
         this.dispatchEvent(
           new ShowToastEvent({
-            title: 'Something went wrong..',
+            title: 'Error when inserting record',
             message: error.body.message,
             variant: 'error'
           })
@@ -114,16 +105,53 @@ export default class BoardShoppingCart extends LightningElement {
       });
   }
 
-  /** stuff used for debugging and console logging */
-  logOutStuff(dataToLog, logmessage) {
-    console.log(logmessage + JSON.stringify(dataToLog));
+  /** function to handle a deleted line from the cart */
+  handleDeleteLine(event) {
+    deleteRecord(event.detail)
+      .then(() => {
+        this.dispatchEvent(
+          new ShowToastEvent({
+            title: 'Success',
+            variant: 'success',
+            message: 'Record ID: ' + event.detail + ' deleted successfully.'
+          })
+        );
+        /** refresh the cart lines */
+        this.performImperativeApexRefresh();
+      })
+      .catch(error => {
+        this.dispatchEvent(
+          new ShowToastEvent({
+            title: 'Error when deleting record',
+            message: error.body.message,
+            variant: 'error'
+          })
+        );
+      });
   }
 
-  renderedCallback() {
-    this.times++;
-    console.log('render callback called this... ' + this.times);
-    this.logOutStuff(this.userId, 'The user ID is: ');
-    this.logOutStuff(this.cartResult, 'The cart result is: ');
+  performImperativeApexRefresh() {
+    getCartHeader({
+        userId: this.userId
+      })
+      .then((result) => {
+        this.cartResult = result;
+      })
+      .catch(error => {
+        this.error = error;
+      });
   }
+
+  /** stuff used for debugging and console logging */
+  // logOutStuff(dataToLog, logmessage) {
+  //   console.log(logmessage + JSON.stringify(dataToLog));
+  // }
+
+  // renderedCallback() {
+  //   this.times++;
+  //   console.log('render callback called this... ' + this.times);
+  //   this.logOutStuff(this.userId, 'The user ID is: ');
+  //   this.logOutStuff(this.cartResult, 'The cart result is: ');
+  // }
   /************** END DEBUGGING *****************************/
 }
