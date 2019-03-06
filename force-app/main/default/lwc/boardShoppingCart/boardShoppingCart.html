@@ -1,11 +1,6 @@
 <template>
   <lightning-card title="Shopping Cart" icon-name="utility:cart">
     <lightning-layout horizontal-align="space" multiple-rows>
-      <lightning-layout-item padding="horizontal-small" size="12">
-        <template if:true={cartResult}>
-          <c-board-cart-header cart-header={cartResult.cartHeader}></c-board-cart-header>
-        </template>
-      </lightning-layout-item>
       <lightning-layout-item size="12" padding="around-small">
         <template if:true={cartResult}>
           <lightning-layout horizontal-align="spread" pull-to-boundary="small" multiple-rows>
@@ -25,6 +20,11 @@
           <template for:each={cartResult.cartLines} for:item="line">
             <c-board-shopping-cart-line cart-line={line} key={line.Id}></c-board-shopping-cart-line>
           </template>
+        </template>
+      </lightning-layout-item>
+      <lightning-layout-item padding="horizontal-small" size="12">
+        <template if:true={cartResult}>
+          <c-board-cart-header cart-header={cartResult.cartHeader}></c-board-cart-header>
         </template>
       </lightning-layout-item>
     </lightning-layout>

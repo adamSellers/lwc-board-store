@@ -1,8 +1,35 @@
 <template>
-  <lightning-layout horizontal-align="space" pull-to-boundary="small">
+  <lightning-layout horizontal-align="space" pull-to-boundary="small" multiple-rows class="cartHeader">
     <template if:true={cartHeader}>
-      <lightning-layout-item size=12 padding="horizontal-small">
-        {cartHeader.Name}
+      <lightning-layout-item size="12">
+        <lightning-layout horizontal-align="end" multiple-rows>
+          <lightning-layout-item padding="around-small" size="9" class="slds-text-align_right">
+            Subtotal:
+          </lightning-layout-item>
+          <lightning-layout-item padding="around-small" size="3" class="slds-text-align_right">
+            <lightning-formatted-number format-style="currency" value={subtotal}></lightning-formatted-number>
+          </lightning-layout-item>
+        </lightning-layout>
+      </lightning-layout-item>
+      <lightning-layout-item size="12">
+        <lightning-layout horizontal-align="end" multiple-rows>
+          <lightning-layout-item padding="around-small" size="9" class="slds-text-align_right">
+            Tax:
+          </lightning-layout-item>
+          <lightning-layout-item padding="around-small" size="3" class="slds-text-align_right">
+            <lightning-formatted-number format-style="currency" value={tax}></lightning-formatted-number>
+          </lightning-layout-item>
+        </lightning-layout>
+      </lightning-layout-item>
+      <lightning-layout-item size="12">
+        <lightning-layout horizontal-align="end" multiple-rows>
+          <lightning-layout-item padding="around-small" size="9" class="slds-text-align_right cartHeading">
+            Cart Total:
+          </lightning-layout-item>
+          <lightning-layout-item padding="around-small" size="3" class="slds-text-align_right underline">
+            <lightning-formatted-number format-style="currency" value={cartTotal}></lightning-formatted-number>
+          </lightning-layout-item>
+        </lightning-layout>
       </lightning-layout-item>
     </template>
   </lightning-layout>
