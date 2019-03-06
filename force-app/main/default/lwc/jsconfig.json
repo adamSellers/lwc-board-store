@@ -33,9 +33,6 @@
             "c/board-tile-list": [
                 "boardTileList/boardTileList.js"
             ],
-            "c/picklist-component": [
-                "picklistComponent/picklistComponent.js"
-            ],
             "c/placeholder": [
                 "placeholder/placeholder.js"
             ],
