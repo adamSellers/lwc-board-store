@@ -11,3 +11,6 @@ images
 # don't push the profiles that come from the source:pull we don't want
 /force-app/main/default/profiles
 /force-app/main/default/settings
+
+# Winter 19 bug on metdata API
+AppSwitcher.appMenu
