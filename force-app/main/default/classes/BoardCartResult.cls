@@ -3,6 +3,9 @@ public with sharing class BoardCartResult {
     @AuraEnabled
     public Boardstore_Cart__c cartHeader { get; set; }
 
+    @AuraEnabled 
+    public Double localTaxRate { get; set; }
+
     @AuraEnabled
     public Boardstore_Cart_Line__c[] cartLines { get; set; }
 

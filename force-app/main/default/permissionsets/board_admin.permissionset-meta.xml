@@ -176,6 +176,11 @@
         <field>Boardstore_Cart__c.Total_Items__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Boardstore_Cart__c.User_Tax_Rate__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>Board Admin</label>
     <objectPermissions>
@@ -211,6 +216,10 @@
     </tabSettings>
     <tabSettings>
         <tab>Board__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>Boardstore_Cart__c</tab>
         <visibility>Visible</visibility>
     </tabSettings>
 </PermissionSet>
