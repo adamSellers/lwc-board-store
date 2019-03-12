@@ -47,6 +47,7 @@ sfdx force:org:open
 
 ## Issues
 
-// TODO
+1. When deleting a line from the shopping cart, the cart totals calculations don't update. This updates in the back end correctly, the component doesn't refresh. 
+2. the clear filters option in the filters component, doesn't reset all the filters in the UI - again, the filters work in the back end successfully. 
 
 

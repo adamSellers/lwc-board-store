@@ -6,9 +6,6 @@
  * Adam Sellers
  * asellers@salesforce.com
  * Things TODO: 
- * 1. Create Apex controller for cart and cart line details
- * 2. Tie user record to cart lookup - only one open cart record per user.
- * 3. Receive event from board card for add to cart and insert into Board_Cart_Lines__c
  * 4. Header totals and tax become a function of the line records and tax information (where to put that?)
  */
 import {
@@ -19,17 +16,15 @@ import {
 
 /** Import the UI API functions needed */
 import {
-  createRecord
+  createRecord,
+  deleteRecord
 } from 'lightning/uiRecordApi';
-
 import {
   CurrentPageReference
 } from 'lightning/navigation';
-
 import {
   ShowToastEvent
 } from 'lightning/platformShowToastEvent';
-
 /** get the current user's ID */
 import Id from '@salesforce/user/Id';
 
@@ -61,16 +56,7 @@ export default class BoardShoppingCart extends LightningElement {
     /** using imperative apex call, so have to do on connected 
      * callback as an init.
      */
-    getCartHeader({
-        userId: this.userId
-      })
-      .then((result) => {
-        this.cartResult = result;
-      })
-      .catch(error => {
-        this.error = error;
-      });
-
+    this.performImperativeApexRefresh();
     /** register the event listener also */
     registerListener('boardAddedToCart', this.receiveAddToCart, this);
   }
@@ -101,16 +87,56 @@ export default class BoardShoppingCart extends LightningElement {
             variant: 'success',
             message: cartLine.fields.Board__r.displayValue + ' added to the cart.'
           })
-        )
+        );
+        /** refresh the cart lines */
+        this.performImperativeApexRefresh();
       })
       .catch(error => {
         this.dispatchEvent(
           new ShowToastEvent({
-            title: 'Something went wrong..',
+            title: 'Error when inserting record',
             message: error.body.message,
             variant: 'error'
           })
         );
+      });
+  }
+
+  /** function to handle a deleted line from the cart */
+  handleDeleteLine(event) {
+    deleteRecord(event.detail)
+      .then(() => {
+        this.dispatchEvent(
+          new ShowToastEvent({
+            title: 'Success',
+            variant: 'success',
+            message: 'Record ID: ' + event.detail + ' deleted successfully.'
+          })
+        );
+        /** refresh the cart lines */
+        this.performImperativeApexRefresh();
+      })
+      .catch(error => {
+        this.dispatchEvent(
+          new ShowToastEvent({
+            title: 'Error when deleting record',
+            message: error.body.message,
+            variant: 'error'
+          })
+        );
+      });
+  }
+
+  performImperativeApexRefresh() {
+    getCartHeader({
+        userId: this.userId
+      })
+      .then((result) => {
+        this.cartResult = result;
+        console.log('Imperative Apex result!! new cartResult is: ' + JSON.stringify(this.cartResult));
+      })
+      .catch(error => {
+        this.error = error;
       });
   }
 

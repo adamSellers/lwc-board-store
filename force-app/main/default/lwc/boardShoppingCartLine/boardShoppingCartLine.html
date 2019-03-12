@@ -1,7 +1,7 @@
 <template>
   <lightning-layout horizontal-align="spread" pull-to-boundary="small" multiple-rows>
     <lightning-layout-item size="6" padding="horizontal-small">
-      {boardName}
+      <span onclick={handleDeleteCartLine}>{boardName}</span>
     </lightning-layout-item>
     <lightning-layout-item size="2" class="slds-align_absolute-center">
       {quantity}
