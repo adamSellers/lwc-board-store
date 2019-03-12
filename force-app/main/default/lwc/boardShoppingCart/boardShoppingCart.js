@@ -6,9 +6,6 @@
  * Adam Sellers
  * asellers@salesforce.com
  * Things TODO: 
- * 1. Create Apex controller for cart and cart line details
- * 2. Tie user record to cart lookup - only one open cart record per user.
- * 3. Receive event from board card for add to cart and insert into Board_Cart_Lines__c
  * 4. Header totals and tax become a function of the line records and tax information (where to put that?)
  */
 import {
@@ -136,6 +133,7 @@ export default class BoardShoppingCart extends LightningElement {
       })
       .then((result) => {
         this.cartResult = result;
+        console.log('Imperative Apex result!! new cartResult is: ' + JSON.stringify(this.cartResult));
       })
       .catch(error => {
         this.error = error;
@@ -143,15 +141,15 @@ export default class BoardShoppingCart extends LightningElement {
   }
 
   /** stuff used for debugging and console logging */
-  // logOutStuff(dataToLog, logmessage) {
-  //   console.log(logmessage + JSON.stringify(dataToLog));
-  // }
+  logOutStuff(dataToLog, logmessage) {
+    console.log(logmessage + JSON.stringify(dataToLog));
+  }
 
-  // renderedCallback() {
-  //   this.times++;
-  //   console.log('render callback called this... ' + this.times);
-  //   this.logOutStuff(this.userId, 'The user ID is: ');
-  //   this.logOutStuff(this.cartResult, 'The cart result is: ');
-  // }
+  renderedCallback() {
+    this.times++;
+    console.log('render callback called this... ' + this.times);
+    this.logOutStuff(this.userId, 'The user ID is: ');
+    this.logOutStuff(this.cartResult, 'The cart result is: ');
+  }
   /************** END DEBUGGING *****************************/
 }

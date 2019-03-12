@@ -24,7 +24,7 @@
       </lightning-layout-item>
       <lightning-layout-item padding="horizontal-small" size="12">
         <template if:true={cartResult}>
-          <c-board-cart-header cart-header={cartResult.cartHeader}></c-board-cart-header>
+          <c-board-cart-header record-id={cartResult.cartHeader.Id}></c-board-cart-header>
         </template>
       </lightning-layout-item>
     </lightning-layout>

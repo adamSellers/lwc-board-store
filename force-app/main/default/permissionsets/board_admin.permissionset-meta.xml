@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
-    <applicationVisibilities>
-        <application>Board_Store</application>
-        <visible>true</visible>
-    </applicationVisibilities>
     <classAccesses>
         <apexClass>BoardCartController</apexClass>
         <enabled>true</enabled>
@@ -127,6 +123,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Boardstore_Cart__c.Cart_Total__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Boardstore_Cart__c.Date_Created__c</field>
         <readable>true</readable>
@@ -143,6 +144,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Boardstore_Cart__c.Shipping_Details_Confirmed__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Boardstore_Cart__c.Shipping_Post_Code_Zip__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -154,6 +160,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Boardstore_Cart__c.Shipping_Street__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Boardstore_Cart__c.Tax__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
