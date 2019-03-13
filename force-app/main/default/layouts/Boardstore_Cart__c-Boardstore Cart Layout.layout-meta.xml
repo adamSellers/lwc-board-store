@@ -22,6 +22,10 @@
                 <behavior>Readonly</behavior>
                 <field>Total_Items__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Tax_Total__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

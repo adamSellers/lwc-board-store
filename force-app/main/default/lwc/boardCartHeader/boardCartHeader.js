@@ -13,7 +13,7 @@ import {
 import NAME_FIELD from '@salesforce/schema/Boardstore_Cart__c.Name';
 import STATUS_FIELD from '@salesforce/schema/Boardstore_Cart__c.Cart_Status__c';
 import SUBTOTAL_FIELD from '@salesforce/schema/Boardstore_Cart__c.Cart_Subtotal__c';
-import TAX_FIELD from '@salesforce/schema/Boardstore_Cart__c.Tax__c';
+import TAX_FIELD from '@salesforce/schema/Boardstore_Cart__c.Tax_Total__c';
 import CART_TOTAL_FIELD from '@salesforce/schema/Boardstore_Cart__c.Cart_Total__c';
 import TOTAL_ITEMS_FIELD from '@salesforce/schema/Boardstore_Cart__c.Total_Items__c';
 import STREET_FIELD from '@salesforce/schema/Boardstore_Cart__c.Shipping_Street__c';

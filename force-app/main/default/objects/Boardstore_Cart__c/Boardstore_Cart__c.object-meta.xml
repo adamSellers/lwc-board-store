@@ -61,7 +61,20 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Boardstore Carts</pluralLabel>
-    <searchLayouts/>
+    <searchLayouts>
+        <customTabListAdditionalFields>Date_Created__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Cart_Status__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Total_Items__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Cart_Subtotal__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Tax__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Cart_Total__c</customTabListAdditionalFields>
+        <searchResultsAdditionalFields>Date_Created__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Cart_Status__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Total_Items__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Cart_Subtotal__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Tax__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Cart_Total__c</searchResultsAdditionalFields>
+    </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>
