@@ -24,7 +24,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Tax_Total__c</field>
+                <field>Total_Cart__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -37,8 +37,8 @@
                 <field>Cart_Subtotal__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Tax__c</field>
+                <behavior>Readonly</behavior>
+                <field>Tax_Total__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>

@@ -7,7 +7,7 @@ public with sharing class BoardCartController {
         List<Boardstore_Cart__c> currentCarts = new List<Boardstore_Cart__c>(
                                             [SELECT Id, Name, Date_Created__c, Cart_Status__c, Cart_Subtotal__c, Total_Items__c,
                                                     Shipping_Street__c, Shipping_City__c, Shipping_Post_Code_Zip__c, Shipping_Country__c,
-                                                    Shipping_Details_Confirmed__c,  Tax_Total__c, Cart_Total__c
+                                                    Shipping_Details_Confirmed__c,  Tax_Total__c, Total_Cart__c
                                             FROM Boardstore_Cart__c 
                                             WHERE ownerId =: userId 
                                             AND  Cart_Status__c = 'Open'
@@ -29,7 +29,7 @@ public with sharing class BoardCartController {
             // reset current carts
             currentCarts = [SELECT Id, Name, Date_Created__c, Cart_Status__c, Cart_Subtotal__c, Total_Items__c,
                                 Shipping_Street__c, Shipping_City__c, Shipping_Post_Code_Zip__c, Shipping_Country__c,
-                                Shipping_Details_Confirmed__c,  Tax_Total__c, Cart_Total__c  
+                                Shipping_Details_Confirmed__c,  Tax_Total__c, Total_Cart__c  
                             FROM Boardstore_Cart__c 
                             WHERE ownerId =: userId 
                             AND  Cart_Status__c = 'Open'
@@ -38,10 +38,10 @@ public with sharing class BoardCartController {
         // create a new instance of the BoardCartResult object
         BoardCartResult cartResult = new BoardCartResult();
         cartResult.cartHeader = currentCarts[0];
+        System.debug('cart header returned: ' + cartResult.cartHeader);
         // find the tax rate from the custom metadata types based on the user's locale
         String localeString = UserInfo.getLocale();
         cartResult.localTaxRate = [SELECT Tax_Rate__c from Tax_Rate__mdt WHERE DeveloperName =: localeString LIMIT 1].Tax_Rate__c;
-        System.debug('That tax rate is: ' + cartResult.localTaxRate);
         
         // now check all the lines in that cart
         cartResult.cartLines = [SELECT Id, Name, Board__r.Name, Price__c, Quantity__c

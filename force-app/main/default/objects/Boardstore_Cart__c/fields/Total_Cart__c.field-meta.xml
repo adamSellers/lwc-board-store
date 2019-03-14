@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Tax_Total__c</fullName>
+    <fullName>Total_Cart__c</fullName>
     <externalId>false</externalId>
-    <formula>ROUND(( Cart_Subtotal__c *  (1/User_Tax_Rate__c) ),2)</formula>
+    <formula>Cart_Subtotal__c +  Tax_Total__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <label>Tax Total</label>
+    <label>Total Cart</label>
     <precision>18</precision>
     <required>false</required>
     <scale>2</scale>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
-    <type>Number</type>
-    <unique>false</unique>
+    <type>Currency</type>
 </CustomField>
