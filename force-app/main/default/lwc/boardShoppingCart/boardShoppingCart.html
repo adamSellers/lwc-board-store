@@ -4,17 +4,17 @@
       <lightning-layout-item size="12" padding="around-small">
         <template if:true={cartResult}>
           <lightning-layout horizontal-align="spread" pull-to-boundary="small" multiple-rows>
-            <lightning-layout-item size="6" padding="horizontal-small">
+            <lightning-layout-item size="7" padding="horizontal-small">
               <div class="slds-text-title_caps slds-text-align_left">Name</div>
             </lightning-layout-item>
             <lightning-layout-item size="2" class="slds-align_absolute-center">
               <div class="slds-text-title_caps slds-text-align_center">Qty</div>
             </lightning-layout-item>
-            <lightning-layout-item size="2" class="slds-align_absolute-center">
-              <div class="slds-text-title_caps slds-text-align_center">Price</div>
-            </lightning-layout-item>
             <lightning-layout-item size="2" class="slds-align_absolute-center" padding="horizontal-small">
               <div class="slds-text-title_caps slds-text-align_center">Total</div>
+            </lightning-layout-item>
+            <lightning-layout-item size="1" class="slds-align_absolute-center" padding="horizontal-small">
+              <div class="slds-text-title_caps slds-text-align_center">&nbsp;</div>
             </lightning-layout-item>
           </lightning-layout>
           <template for:each={cartResult.cartLines} for:item="line">
