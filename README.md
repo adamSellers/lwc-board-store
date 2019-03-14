@@ -52,5 +52,6 @@ Add a custom metadata type entry to the Tax_Rate__mdt object that specifies a ta
 
 1. When deleting a line from the shopping cart, the cart totals calculations don't update. This updates in the back end correctly, the component doesn't refresh. 
 2. the clear filters option in the filters component, doesn't reset all the filters in the UI - again, the filters work in the back end successfully. 
+3. Tax calculation formulas are simplistic. These should be updated to include greater precision..
 
 

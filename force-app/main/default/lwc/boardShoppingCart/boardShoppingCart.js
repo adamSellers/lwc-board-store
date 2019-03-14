@@ -5,8 +5,6 @@
  * 23rd Feb 2019
  * Adam Sellers
  * asellers@salesforce.com
- * Things TODO: 
- * 4. Header totals and tax become a function of the line records and tax information (where to put that?)
  */
 import {
   LightningElement,
@@ -44,17 +42,14 @@ import {
 export default class BoardShoppingCart extends LightningElement {
   @track userId = Id;
   @track cartResult;
-  times = 0;
 
   @wire(CurrentPageReference) pageRef;
 
-  /** Setup the wire services required
-   * 1 - get an open cart from Board_Cart__c
-   * 2 - for that cart ID, get associated lines
-   */
   connectedCallback() {
     /** using imperative apex call, so have to do on connected 
-     * callback as an init.
+     * callback as an init. Imperative apex call required as there
+     * is a possibility that the Apex controller will do DML, therefore
+     * can't be set to cacheable=true => no wire service available.
      */
     this.performImperativeApexRefresh();
     /** register the event listener also */
@@ -133,22 +128,10 @@ export default class BoardShoppingCart extends LightningElement {
       })
       .then((result) => {
         this.cartResult = result;
+        console.log('apex refreshed! cart details are: ' + JSON.stringify(this.cartResult));
       })
       .catch(error => {
         this.error = error;
       });
   }
-
-  /** stuff used for debugging and console logging */
-  // logOutStuff(dataToLog, logmessage) {
-  //   console.log(logmessage + JSON.stringify(dataToLog));
-  // }
-
-  // renderedCallback() {
-  //   this.times++;
-  //   console.log('render callback called this... ' + this.times);
-  //   this.logOutStuff(this.userId, 'The user ID is: ');
-  //   this.logOutStuff(this.cartResult, 'The cart result is: ');
-  // }
-  /************** END DEBUGGING *****************************/
 }
