@@ -32,6 +32,12 @@
             ],
             "c/pubsub": [
                 "pubsub/pubsub.js"
+            ],
+            "c/board-cart-totals": [
+                "boardCartTotals/boardCartTotals.js"
+            ],
+            "c/board-cart-shipping": [
+                "boardCartShipping/boardCartShipping.js"
             ]
         }
     },

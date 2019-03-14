@@ -2,6 +2,13 @@
   <lightning-card title="Shopping Cart" icon-name="utility:cart">
     <lightning-layout horizontal-align="space" multiple-rows>
       <lightning-layout-item size="12" padding="around-small">
+        <template if:true={shippingDetails}>
+          <lightning-layout horizontal-align="space">
+            <lightning-layout-item>
+              <c-board-cart-shipping cart-id={cartResult.cartHeader.Id}></c-board-cart-shipping>
+            </lightning-layout-item>
+          </lightning-layout>
+        </template>
         <template if:true={cartResult}>
           <lightning-layout horizontal-align="spread" pull-to-boundary="small" multiple-rows>
             <lightning-layout-item size="7" padding="horizontal-small">
@@ -24,7 +31,8 @@
       </lightning-layout-item>
       <lightning-layout-item padding="horizontal-small" size="12">
         <template if:true={cartResult}>
-          <c-board-cart-header record-id={cartResult.cartHeader.Id}></c-board-cart-header>
+          <c-board-cart-totals total={cartResult.cartHeader.Total_Cart__c} subtotal={cartResult.cartHeader.Cart_Subtotal__c}
+            tax={cartResult.cartHeader.Tax_Total__c} oncheckout={handleCheckout}></c-board-cart-totals>
         </template>
       </lightning-layout-item>
     </lightning-layout>

@@ -44,7 +44,7 @@ import {
 export default class BoardShoppingCart extends LightningElement {
   @track userId = Id;
   @track cartResult;
-  times = 0;
+  @track shippingDetails = false;
 
   @wire(CurrentPageReference) pageRef;
 
@@ -125,6 +125,10 @@ export default class BoardShoppingCart extends LightningElement {
           })
         );
       });
+  }
+
+  handleCheckout() {
+    this.shippingDetails = !this.shippingDetails;
   }
 
   performImperativeApexRefresh() {
