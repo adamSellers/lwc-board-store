@@ -21,9 +21,6 @@
             "c/board-shopping-cart-line": [
                 "boardShoppingCartLine/boardShoppingCartLine.js"
             ],
-            "c/board-store": [
-                "boardStore/boardStore.js"
-            ],
             "c/board-tile": [
                 "boardTile/boardTile.js"
             ],
