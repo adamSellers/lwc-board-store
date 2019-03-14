@@ -167,13 +167,18 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>Boardstore_Cart__c.Tax__c</field>
+        <editable>false</editable>
+        <field>Boardstore_Cart__c.Tax_Total__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>Boardstore_Cart__c.Total_Items__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Boardstore_Cart__c.User_Tax_Rate__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
@@ -211,6 +216,10 @@
     </tabSettings>
     <tabSettings>
         <tab>Board__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>Boardstore_Cart__c</tab>
         <visibility>Visible</visibility>
     </tabSettings>
 </PermissionSet>

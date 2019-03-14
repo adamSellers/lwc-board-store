@@ -35,6 +35,9 @@ Open the org and enjoy
 sfdx force:org:open
 ````
 
+** Optional ** 
+Add a custom metadata type entry to the Tax_Rate__mdt object that specifies a tax rate and/or locale that you're interested in. Otherwise, the system will default to 10%. 
+
 
 ## Resources
 // TODO

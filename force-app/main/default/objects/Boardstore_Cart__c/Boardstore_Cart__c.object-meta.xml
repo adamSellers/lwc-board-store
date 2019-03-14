@@ -61,7 +61,6 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Boardstore Carts</pluralLabel>
-    <searchLayouts/>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>
