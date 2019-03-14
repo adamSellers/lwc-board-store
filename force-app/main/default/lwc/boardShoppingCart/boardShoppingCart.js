@@ -133,7 +133,6 @@ export default class BoardShoppingCart extends LightningElement {
       })
       .then((result) => {
         this.cartResult = result;
-        console.log('Imperative Apex result!! new cartResult is: ' + JSON.stringify(this.cartResult));
       })
       .catch(error => {
         this.error = error;
@@ -141,15 +140,15 @@ export default class BoardShoppingCart extends LightningElement {
   }
 
   /** stuff used for debugging and console logging */
-  logOutStuff(dataToLog, logmessage) {
-    console.log(logmessage + JSON.stringify(dataToLog));
-  }
+  // logOutStuff(dataToLog, logmessage) {
+  //   console.log(logmessage + JSON.stringify(dataToLog));
+  // }
 
-  renderedCallback() {
-    this.times++;
-    console.log('render callback called this... ' + this.times);
-    this.logOutStuff(this.userId, 'The user ID is: ');
-    this.logOutStuff(this.cartResult, 'The cart result is: ');
-  }
+  // renderedCallback() {
+  //   this.times++;
+  //   console.log('render callback called this... ' + this.times);
+  //   this.logOutStuff(this.userId, 'The user ID is: ');
+  //   this.logOutStuff(this.cartResult, 'The cart result is: ');
+  // }
   /************** END DEBUGGING *****************************/
 }

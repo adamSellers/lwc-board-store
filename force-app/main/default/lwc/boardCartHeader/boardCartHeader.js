@@ -74,11 +74,6 @@ export default class BoardCartHeader extends LightningElement {
         zip: data.fields.Shipping_Post_Code_Zip__c.value,
         country: data.fields.Shipping_Country__c.value
       }
-      console.log('wire service has fired again, new cart data: ' + JSON.stringify(this._cart));
     }
-  }
-
-  renderedCallback() {
-    console.log('changes to the recordId: ' + this.recordId);
   }
 }
