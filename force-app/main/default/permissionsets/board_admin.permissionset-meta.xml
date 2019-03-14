@@ -173,6 +173,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Boardstore_Cart__c.Total_Cart__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Boardstore_Cart__c.Total_Items__c</field>
         <readable>true</readable>
     </fieldPermissions>
