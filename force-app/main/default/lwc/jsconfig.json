@@ -9,9 +9,6 @@
             "c/board-cart-header": [
                 "boardCartHeader/boardCartHeader.js"
             ],
-            "c/board-cart-lines": [
-                "boardCartLines/boardCartLines.js"
-            ],
             "c/board-filters": [
                 "boardFilters/boardFilters.js"
             ],
