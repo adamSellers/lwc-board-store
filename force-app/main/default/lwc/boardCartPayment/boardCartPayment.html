@@ -1,0 +1,21 @@
+<template>
+  <div class="slds-m-around_medium">
+    <lightning-layout horizontal-align="spread" multiple-rows pull-to-boundary="small">
+      <lightning-layout-item size="12" padding="horizontal-small" flexibility="auto">
+        <div class="slds-text-title_caps">Please Enter Payment Information</div>
+      </lightning-layout-item>
+      <lightning-layout-item size="12" padding="around-small" flexibility="auto">
+        <lightning-input label="Card Number"></lightning-input>
+      </lightning-layout-item>
+      <lightning-layout-item size="6" padding="around-small" flexibility="auto">
+        <lightning-input label="Expiry Date" placeholder="MM/YY"></lightning-input>
+      </lightning-layout-item>
+      <lightning-layout-item size="6" padding="around-small" flexibility="auto">
+        <lightning-input label="CCV"></lightning-input>
+      </lightning-layout-item>
+      <lightning-layout-item size="12" padding="around-small" flexibility="auto" class="slds-text-align_right">
+        <button onclick={handlePlaceOrder} class="slds-button slds-button_brand">Place Order</button>
+      </lightning-layout-item>
+    </lightning-layout>
+  </div>
+</template>

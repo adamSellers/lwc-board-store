@@ -38,6 +38,9 @@
             ],
             "c/board-cart-shipping": [
                 "boardCartShipping/boardCartShipping.js"
+            ],
+            "c/board-cart-payment": [
+                "boardCartPayment/boardCartPayment.js"
             ]
         }
     },

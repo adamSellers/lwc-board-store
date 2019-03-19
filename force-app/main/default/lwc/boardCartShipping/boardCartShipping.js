@@ -4,7 +4,6 @@ import {
 } from 'lwc';
 
 export default class BoardCartShipping extends LightningElement {
-  @api recordId;
   @api street;
   @api city;
   @api state;
@@ -13,7 +12,6 @@ export default class BoardCartShipping extends LightningElement {
 
   connectedCallback() {
     this.shippingDetails = {
-      idToUpdate: this.recordId,
       updatedStreet: this.street,
       updatedCity: this.city,
       updatedState: this.state,

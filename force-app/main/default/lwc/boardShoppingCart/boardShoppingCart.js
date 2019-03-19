@@ -5,8 +5,6 @@
  * 23rd Feb 2019
  * Adam Sellers
  * asellers@salesforce.com
- * Things TODO: 
- * 4. Header totals and tax become a function of the line records and tax information (where to put that?)
  */
 import {
   LightningElement,
@@ -43,6 +41,7 @@ import SHIPPING_ZIP_FIELD from '@salesforce/schema/Boardstore_Cart__c.Shipping_P
 import SHIPPING_COUNTRY_FIELD from '@salesforce/schema/Boardstore_Cart__c.Shipping_Country__c';
 import SHIPPING_CONFRIMED_FIELD from '@salesforce/schema/Boardstore_Cart__c.Shipping_Details_Confirmed__c';
 import ID_FIELD from '@salesforce/schema/Boardstore_Cart__c.Id';
+import CART_STATUS_FIELD from '@salesforce/schema/Boardstore_Cart__c.Cart_Status__c';
 
 /** Import pubsub mechanism */
 import {
@@ -54,6 +53,7 @@ export default class BoardShoppingCart extends LightningElement {
   @track cartResult;
   @track shippingDetails = false;
   @track processPayment = false;
+  @track shoppingCart = false;
 
   @wire(CurrentPageReference) pageRef;
 
@@ -65,6 +65,7 @@ export default class BoardShoppingCart extends LightningElement {
     /** using imperative apex call, so have to do on connected 
      * callback as an init.
      */
+    this.shoppingCart = true;
     this.performImperativeApexRefresh();
     /** register the event listener also */
     registerListener('boardAddedToCart', this.receiveAddToCart, this);
@@ -138,6 +139,7 @@ export default class BoardShoppingCart extends LightningElement {
 
   handleCheckout() {
     this.shippingDetails = !this.shippingDetails;
+    this.shoppingCart = !this.shoppingCart;
   }
 
   performImperativeApexRefresh() {
@@ -153,13 +155,12 @@ export default class BoardShoppingCart extends LightningElement {
   }
 
   handleUpdatedShipping(event) {
-    console.log('got the shipping updated event: ' + JSON.stringify(event));
     /** this function will update the cart record with shipping details
      *  and set the payment flag to display the payment options
      */
     /** setup the record input object */
     const fields = {};
-    fields[ID_FIELD.fieldApiName] = event.detail.idToUpdate;
+    fields[ID_FIELD.fieldApiName] = this.cartResult.cartHeader.Id;
     fields[SHIPPING_STREET_FIELD.fieldApiName] = event.detail.updatedStreet;
     fields[SHIPPING_CITY_FIELD.fieldApiName] = event.detail.updatedCity;
     fields[SHIPPING_STATE_FIELD.fieldApiName] = event.detail.updatedState;
@@ -176,15 +177,54 @@ export default class BoardShoppingCart extends LightningElement {
       .then(() => {
         this.dispatchEvent(
           new ShowToastEvent({
-            title: 'Shipping Updated',
+            title: 'Shipping Confirmed',
             variant: 'success',
-            message: 'The shipping details are updated'
+            message: 'Thanks for confirming your shipment details'
           })
         );
 
         /** set the payment details and shipping flags to display the next component */
         this.shippingDetails = false;
         this.processPayment = true;
+      })
+      .catch(error => {
+        this.dispatchEvent(
+          new ShowToastEvent({
+            title: 'Oops!',
+            variant: 'error',
+            message: error.body.message
+          })
+        );
+      });
+  }
+
+  handleOrderPlaced() {
+    /** This is simply going to upate the cart status to closed and an apex
+     * trigger will handle the creating of the order and order lines.
+     */
+    const cartFields = {};
+    cartFields[ID_FIELD.fieldApiName] = this.cartResult.cartHeader.Id;
+    cartFields[CART_STATUS_FIELD.fieldApiName] = 'Closed';
+
+    console.log('the fields are: ' + JSON.stringify(cartFields));
+    const orderUpdate = {
+      cartFields
+    };
+
+    updateRecord(orderUpdate)
+      .then(() => {
+        this.dispatchEvent(
+          new ShowToastEvent({
+            title: 'Order Received',
+            variant: 'success',
+            message: 'Order Placed'
+          })
+        );
+
+        /** set the payment details and shipping flags to display the next component */
+        this.shippingDetails = false;
+        this.processPayment = false;
+        this.shoppingCart = true;
       })
       .catch(error => {
         this.dispatchEvent(

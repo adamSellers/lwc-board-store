@@ -1,7 +1,7 @@
 <template>
-  <lightning-card title="Shopping Cart" icon-name="utility:cart">
+  <lightning-card title="Shopping Experience" icon-name="utility:cart">
     <lightning-layout horizontal-align="space" multiple-rows>
-      <lightning-layout-item size="12" padding="around-small">
+      <lightning-layout-item size="12" padding="horizontal-small">
         <template if:true={shippingDetails}>
           <lightning-layout horizontal-align="space">
             <lightning-layout-item>
@@ -11,30 +11,33 @@
                 onshippingupdate={handleUpdatedShipping}></c-board-cart-shipping>
             </lightning-layout-item>
           </lightning-layout>
-        </template><template if:true={shippingDetails}>
+        </template>
+        <template if:true={processPayment}>
           <lightning-layout horizontal-align="space">
             <lightning-layout-item>
-              Payment Page goes here
+              <c-board-cart-payment onorderplaced={handleOrderPlaced}></c-board-cart-payment>
             </lightning-layout-item>
           </lightning-layout>
         </template>
-        <template if:true={cartResult}>
-          <lightning-layout horizontal-align="spread" pull-to-boundary="small" multiple-rows>
-            <lightning-layout-item size="7" padding="horizontal-small">
-              <div class="slds-text-title_caps slds-text-align_left">Name</div>
-            </lightning-layout-item>
-            <lightning-layout-item size="2" class="slds-align_absolute-center">
-              <div class="slds-text-title_caps slds-text-align_center">Qty</div>
-            </lightning-layout-item>
-            <lightning-layout-item size="2" class="slds-align_absolute-center" padding="horizontal-small">
-              <div class="slds-text-title_caps slds-text-align_center">Total</div>
-            </lightning-layout-item>
-            <lightning-layout-item size="1" class="slds-align_absolute-center" padding="horizontal-small">
-              <div class="slds-text-title_caps slds-text-align_center">&nbsp;</div>
-            </lightning-layout-item>
-          </lightning-layout>
-          <template for:each={cartResult.cartLines} for:item="line">
-            <c-board-shopping-cart-line cart-line={line} key={line.Id} ondeleteline={handleDeleteLine}></c-board-shopping-cart-line>
+        <template if:true={shoppingCart}>
+          <template if:true={cartResult}>
+            <lightning-layout horizontal-align="spread" pull-to-boundary="small" multiple-rows>
+              <lightning-layout-item size="7" padding="horizontal-small">
+                <div class="slds-text-title_caps slds-text-align_left">Name</div>
+              </lightning-layout-item>
+              <lightning-layout-item size="2" class="slds-align_absolute-center">
+                <div class="slds-text-title_caps slds-text-align_center">Qty</div>
+              </lightning-layout-item>
+              <lightning-layout-item size="2" class="slds-align_absolute-center" padding="horizontal-small">
+                <div class="slds-text-title_caps slds-text-align_center">Total</div>
+              </lightning-layout-item>
+              <lightning-layout-item size="1" class="slds-align_absolute-center" padding="horizontal-small">
+                <div class="slds-text-title_caps slds-text-align_center">&nbsp;</div>
+              </lightning-layout-item>
+            </lightning-layout>
+            <template for:each={cartResult.cartLines} for:item="line">
+              <c-board-shopping-cart-line cart-line={line} key={line.Id} ondeleteline={handleDeleteLine}></c-board-shopping-cart-line>
+            </template>
           </template>
         </template>
       </lightning-layout-item>
