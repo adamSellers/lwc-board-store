@@ -5,7 +5,16 @@
         <template if:true={shippingDetails}>
           <lightning-layout horizontal-align="space">
             <lightning-layout-item>
-              <c-board-cart-shipping cart-id={cartResult.cartHeader.Id}></c-board-cart-shipping>
+              <c-board-cart-shipping street={cartResult.cartHeader.Shipping_Street__c} city={cartResult.cartHeader.Shipping_City__c}
+                state={cartResult.cartHeader.Shipping_State__c} zip={cartResult.cartHeader.Shipping_Post_Code_Zip__c}
+                country={cartResult.cartHeader.Shipping_Country__c} confirmed={cartResult.cartHeader.Shipping_Details_Confirmed__c}
+                onshippingupdate={handleUpdatedShipping}></c-board-cart-shipping>
+            </lightning-layout-item>
+          </lightning-layout>
+        </template><template if:true={shippingDetails}>
+          <lightning-layout horizontal-align="space">
+            <lightning-layout-item>
+              Payment Page goes here
             </lightning-layout-item>
           </lightning-layout>
         </template>

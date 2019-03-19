@@ -7,7 +7,7 @@ public with sharing class BoardCartController {
         List<Boardstore_Cart__c> currentCarts = new List<Boardstore_Cart__c>(
                                             [SELECT Id, Name, Date_Created__c, Cart_Status__c, Cart_Subtotal__c, Total_Items__c,
                                                     Shipping_Street__c, Shipping_City__c, Shipping_Post_Code_Zip__c, Shipping_Country__c,
-                                                    Shipping_Details_Confirmed__c,  Tax_Total__c, Total_Cart__c
+                                                    Shipping_Details_Confirmed__c,  Tax_Total__c, Total_Cart__c, Shipping_State__c
                                             FROM Boardstore_Cart__c 
                                             WHERE ownerId =: userId 
                                             AND  Cart_Status__c = 'Open'
@@ -28,8 +28,8 @@ public with sharing class BoardCartController {
             // TODO: add default shipping fields.
             // reset current carts
             currentCarts = [SELECT Id, Name, Date_Created__c, Cart_Status__c, Cart_Subtotal__c, Total_Items__c,
-                                Shipping_Street__c, Shipping_City__c, Shipping_Post_Code_Zip__c, Shipping_Country__c,
-                                Shipping_Details_Confirmed__c,  Tax_Total__c, Total_Cart__c  
+                                Shipping_Street__c, Shipping_City__c, Shipping_Post_Code_Zip__c, Shipping_State__c, 
+                                Shipping_Country__c, Shipping_Details_Confirmed__c,  Tax_Total__c, Total_Cart__c  
                             FROM Boardstore_Cart__c 
                             WHERE ownerId =: userId 
                             AND  Cart_Status__c = 'Open'

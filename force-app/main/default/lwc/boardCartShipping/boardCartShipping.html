@@ -1,3 +1,27 @@
 <template>
-  <lightning-record-form record-id={recordId} object-api-name="Boardstore_Cart__c" columns="2" onsubmit={handleShippingUpdate}></lightning-record-form>
+  <div class="slds-m-around_medium">
+    <lightning-layout horizontal-align="spread" multiple-rows pull-to-boundary="small">
+      <lightning-layout-item size="12" padding="horizontal-small" flexibility="auto">
+        <div class="slds-text-title_caps">Please Enter Shipping Address</div>
+      </lightning-layout-item>
+      <lightning-layout-item size="12" padding="around-small" flexibility="auto">
+        <lightning-input label="Street" id="street" value={shippingDetails.updatedStreet} onchange={handleUpdateStreet}></lightning-input>
+      </lightning-layout-item>
+      <lightning-layout-item size="6" padding="around-small" flexibility="auto">
+        <lightning-input label="City" value={city} onchange={handleUpdateCity}></lightning-input>
+      </lightning-layout-item>
+      <lightning-layout-item size="6" padding="around-small" flexibility="auto">
+        <lightning-input label="State" value={state} onchange={handleUpdateState}></lightning-input>
+      </lightning-layout-item>
+      <lightning-layout-item size="6" padding="around-small" flexibility="auto">
+        <lightning-input label="Zip" value={zip} onchange={handleUpdateZip}></lightning-input>
+      </lightning-layout-item>
+      <lightning-layout-item size="6" padding="around-small" flexibility="auto">
+        <lightning-input label="Country" value={country} onchange={handleUpdateCountry}></lightning-input>
+      </lightning-layout-item>
+      <lightning-layout-item size="12" padding="around-small" flexibility="auto" class="slds-text-align_right">
+        <button onclick={handleContinue} class="slds-button slds-button_brand">Continue</button>
+      </lightning-layout-item>
+    </lightning-layout>
+  </div>
 </template>
