@@ -57,13 +57,11 @@ export default class BoardShoppingCart extends LightningElement {
 
   @wire(CurrentPageReference) pageRef;
 
-  /** Setup the wire services required
-   * 1 - get an open cart from Board_Cart__c
-   * 2 - for that cart ID, get associated lines
-   */
   connectedCallback() {
     /** using imperative apex call, so have to do on connected 
-     * callback as an init.
+     * callback as an init. Imperative apex call required as there
+     * is a possibility that the Apex controller will do DML, therefore
+     * can't be set to cacheable=true => no wire service available.
      */
     this.shoppingCart = true;
     this.performImperativeApexRefresh();
@@ -148,6 +146,7 @@ export default class BoardShoppingCart extends LightningElement {
       })
       .then((result) => {
         this.cartResult = result;
+        console.log('apex refreshed! cart details are: ' + JSON.stringify(this.cartResult));
       })
       .catch(error => {
         this.error = error;
