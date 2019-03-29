@@ -1,0 +1,11 @@
+.cartHeader {
+  border-top: 1px solid double grey;
+}
+
+.cartHeading {
+  font-weight: bold;
+}
+
+.underline {
+  border-bottom: double grey;
+}

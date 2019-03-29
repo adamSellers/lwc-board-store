@@ -9,6 +9,15 @@
             "c/board-cart-header": [
                 "boardCartHeader/boardCartHeader.js"
             ],
+            "c/board-cart-payment": [
+                "boardCartPayment/boardCartPayment.js"
+            ],
+            "c/board-cart-shipping": [
+                "boardCartShipping/boardCartShipping.js"
+            ],
+            "c/board-cart-totals": [
+                "boardCartTotals/boardCartTotals.js"
+            ],
             "c/board-filters": [
                 "boardFilters/boardFilters.js"
             ],
