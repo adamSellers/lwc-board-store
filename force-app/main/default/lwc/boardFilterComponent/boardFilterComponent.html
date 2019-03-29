@@ -1,0 +1,12 @@
+<template>
+  <lightning-card title="Filters" icon-name="standard:calibration">
+    <lightning-button-icon icon-name="utility:down" slot="actions" onclick={toggleFilters}></lightning-button-icon>
+    <template if:true={showFilters}>
+      <lightning-layout>
+        <lightning-layout-item size="12">
+          <c-board-filters></c-board-filters>
+        </lightning-layout-item>
+      </lightning-layout>
+    </template>
+  </lightning-card>
+</template>

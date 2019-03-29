@@ -69,9 +69,9 @@ export default class BoardFilters extends LightningElement {
   })
   flexes;
 
-  handleResetFilters() {
-    this.initialiseFilters(true);
-  }
+  // handleResetFilters() {
+  //   this.initialiseFilters(true);
+  // }
 
   handleSearchKeyChange(event) {
     const key = event.target.value;
@@ -119,6 +119,8 @@ export default class BoardFilters extends LightningElement {
   initialiseFilters(fullReset) {
     /** check to see if we want search and price reset
      * or if this is a call from the initalisation
+     * -- removed the full reset feature 29th March in AK. --
+     * -- leaving the logic here for later however.. --
      */
     if (fullReset) {
       this.filters.searchKey = '';
