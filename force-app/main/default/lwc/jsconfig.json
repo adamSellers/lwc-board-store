@@ -18,6 +18,9 @@
             "c/board-cart-totals": [
                 "boardCartTotals/boardCartTotals.js"
             ],
+            "c/board-filter-component": [
+                "boardFilterComponent/boardFilterComponent.js"
+            ],
             "c/board-filters": [
                 "boardFilters/boardFilters.js"
             ],
