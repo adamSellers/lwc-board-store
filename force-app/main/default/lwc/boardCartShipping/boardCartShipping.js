@@ -48,4 +48,9 @@ export default class BoardCartShipping extends LightningElement {
 
     this.dispatchEvent(shippingUpdatedEvent);
   }
+
+  handleBack() {
+    /** fire a custom event to the shopping cart with the back request */
+    this.dispatchEvent(new CustomEvent('backbutton'));
+  }
 }

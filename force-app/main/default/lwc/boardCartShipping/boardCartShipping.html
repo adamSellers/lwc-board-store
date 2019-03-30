@@ -5,7 +5,8 @@
         <div class="slds-text-title_caps">Please Enter Shipping Address</div>
       </lightning-layout-item>
       <lightning-layout-item size="12" padding="around-small" flexibility="auto">
-        <lightning-input label="Street" id="street" value={shippingDetails.updatedStreet} onchange={handleUpdateStreet}></lightning-input>
+        <lightning-input label="Street" id="street" value={shippingDetails.updatedStreet} onchange={handleUpdateStreet}>
+        </lightning-input>
       </lightning-layout-item>
       <lightning-layout-item size="6" padding="around-small" flexibility="auto">
         <lightning-input label="City" value={city} onchange={handleUpdateCity}></lightning-input>
@@ -20,6 +21,7 @@
         <lightning-input label="Country" value={country} onchange={handleUpdateCountry}></lightning-input>
       </lightning-layout-item>
       <lightning-layout-item size="12" padding="around-small" flexibility="auto" class="slds-text-align_right">
+        <button onclick={handleBack} class="slds-button slds-button_neutral slds-p-right_small">Back</button>
         <button onclick={handleContinue} class="slds-button slds-button_brand">Continue</button>
       </lightning-layout-item>
     </lightning-layout>

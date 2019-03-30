@@ -136,8 +136,7 @@ export default class BoardShoppingCart extends LightningElement {
   }
 
   handleCheckout() {
-    this.shippingDetails = !this.shippingDetails;
-    this.shoppingCart = !this.shoppingCart;
+    this.toggleShippingDetails();
   }
 
   performImperativeApexRefresh() {
@@ -195,6 +194,20 @@ export default class BoardShoppingCart extends LightningElement {
           })
         );
       });
+  }
+
+  handleShippingBack() {
+    this.toggleShippingDetails();
+  }
+
+  handlePaymentBack() {
+    this.shippingDetails = true;
+    this.processPayment = false;
+  }
+
+  toggleShippingDetails() {
+    this.shippingDetails = !this.shippingDetails;
+    this.shoppingCart = !this.shoppingCart;
   }
 
   handleOrderPlaced() {
