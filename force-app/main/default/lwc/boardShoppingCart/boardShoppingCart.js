@@ -220,12 +220,9 @@ export default class BoardShoppingCart extends LightningElement {
     fields[ID_FIELD.fieldApiName] = this.cartResult.cartHeader.Id;
     fields[CART_STATUS_FIELD.fieldApiName] = 'Closed';
 
-    console.log('the fields are: ' + JSON.stringify(fields));
-    console.log('with the billing address: ' + JSON.stringify(event.detail));
     const recordInput = {
       fields
     };
-    console.log('is the record Input object real? --> ' + JSON.stringify(recordInput));
     updateRecord(recordInput)
       .then(() => {
         this.dispatchEvent(
