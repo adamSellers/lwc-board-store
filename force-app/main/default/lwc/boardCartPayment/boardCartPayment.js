@@ -31,7 +31,6 @@ export default class BoardCartPayment extends LightningElement {
 
   handleUseShippingAddress() {
     this._useDefaultShippingDetails = !this._useDefaultShippingDetails;
-    console.log('shipping defaults flag is: ' + this._useDefaultShippingDetails);
     if (this._useDefaultShippingDetails) {
       this._street = this.street;
       this._city = this.city;
