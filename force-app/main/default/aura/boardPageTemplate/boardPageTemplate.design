@@ -1,7 +1,7 @@
-<design:component label="Two columns with bottom row: 8 4 | 12">
+<design:component label="Three columns 6 3 3">
   <flexipage:template>
     <flexipage:region name="left" defaultWidth="LARGE" />
-    <flexipage:region name="bottom" defaultWidth="LARGE" />
+    <flexipage:region name="centre" defaultWidth="SMALL" />
     <flexipage:region name="right" defaultWidth="SMALL" />
   </flexipage:template>
 </design:component>
