@@ -54,6 +54,7 @@ export default class BoardShoppingCart extends LightningElement {
   @track shippingDetails = false;
   @track processPayment = false;
   @track shoppingCart = false;
+  showButton = true;
 
   @wire(CurrentPageReference) pageRef;
 
@@ -208,6 +209,7 @@ export default class BoardShoppingCart extends LightningElement {
   toggleShippingDetails() {
     this.shippingDetails = !this.shippingDetails;
     this.shoppingCart = !this.shoppingCart;
+    this.showButton = !this.showButton;
   }
 
   handleOrderPlaced() {

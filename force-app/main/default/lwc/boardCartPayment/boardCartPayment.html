@@ -13,6 +13,31 @@
       <lightning-layout-item size="6" padding="around-small" flexibility="auto">
         <lightning-input label="CCV"></lightning-input>
       </lightning-layout-item>
+      <lightning-layout-item size="12" padding="around-small">
+        <span class="slds-text-title_caps">Billing Address Details</span>
+      </lightning-layout-item>
+      <lightning-layout-item size="12" padding="around-small">
+        <lightning-input type="checkbox" label="Use Shipping Details?" onchange={handleUseShippingAddress}>
+        </lightning-input>
+      </lightning-layout-item>
+      <template if:false={_useDefaultShippingDetails}>
+        <lightning-layout-item size="12" padding="around-small" flexibility="auto">
+          <lightning-input label="Street" value={_street} onchange={handleUpdateStreet}>
+          </lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-small" flexibility="auto">
+          <lightning-input label="City" value={_city} onchange={handleUpdateCity}></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-small" flexibility="auto">
+          <lightning-input label="State" value={_state} onchange={handleUpdateState}></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-small" flexibility="auto">
+          <lightning-input label="Zip" value={_zip} onchange={handleUpdateZip}></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-small" flexibility="auto">
+          <lightning-input label="Country" value={_country} onchange={handleUpdateCountry}></lightning-input>
+        </lightning-layout-item>
+      </template>
       <lightning-layout-item size="12" padding="around-small" flexibility="auto" class="slds-text-align_right">
         <button onclick={handleBackButton} class="slds-button slds-button_neutral slds-p-right_small">Back</button>
         <button onclick={handlePlaceOrder} class="slds-button slds-button_brand">Place Order</button>

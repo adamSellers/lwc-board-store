@@ -30,8 +30,10 @@
         </lightning-layout-item>
       </lightning-layout>
     </lightning-layout-item>
-    <lightning-layout-item size="12" class="slds-text-align_right" padding="around-small">
-      <button class="slds-button slds-button_brand" onclick={handleCheckout}>Checkout</button>
-    </lightning-layout-item>
+    <template if:true={showbutton}>
+      <lightning-layout-item size="12" class="slds-text-align_right" padding="around-small">
+        <button class="slds-button slds-button_brand" onclick={handleCheckout}>Checkout</button>
+      </lightning-layout-item>
+    </template>
   </lightning-layout>
 </template>
