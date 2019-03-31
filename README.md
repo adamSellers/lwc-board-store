@@ -51,5 +51,6 @@ Add a custom metadata type entry to the Tax_Rate__mdt object that specifies a ta
 ## Issues
 
 1. Tax calculation formulas are simplistic. These should be updated to include greater precision..
+2. Needs a mechanism to reset filters, when a search is entered and filters are minimised then expanded again the search criteria remain (ie, items are filtered) but filters appear as first shown. 
 
 
