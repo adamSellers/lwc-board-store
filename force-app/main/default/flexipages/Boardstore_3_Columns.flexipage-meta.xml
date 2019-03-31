@@ -11,20 +11,20 @@
         <type>Region</type>
     </flexiPageRegions>
     <flexiPageRegions>
-        <name>bottom</name>
-        <type>Region</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
         <componentInstances>
             <componentName>boardCard</componentName>
         </componentInstances>
+        <name>centre</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
         <componentInstances>
             <componentName>boardShoppingCart</componentName>
         </componentInstances>
         <name>right</name>
         <type>Region</type>
     </flexiPageRegions>
-    <masterLabel>Board Store</masterLabel>
+    <masterLabel>Boardstore 3 Columns</masterLabel>
     <template>
         <name>boardPageTemplate</name>
     </template>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>Created by Lightning App Builder</description>
-    <flexiPage>Board_Store</flexiPage>
-    <label>Board Store</label>
+    <flexiPage>Boardstore_3_Columns</flexiPage>
+    <label>Shred Head</label>
     <mobileReady>true</mobileReady>
-    <motif>Custom9: Lightning</motif>
+    <motif>Custom1: Heart</motif>
 </CustomTab>
