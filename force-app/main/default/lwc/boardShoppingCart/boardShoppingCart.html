@@ -52,7 +52,7 @@
         <template if:true={cartResult}>
           <c-board-cart-totals total={cartResult.cartHeader.Total_Cart__c}
             subtotal={cartResult.cartHeader.Cart_Subtotal__c} tax={cartResult.cartHeader.Tax_Total__c}
-            oncheckout={handleCheckout} showbutton={shoppingCart}></c-board-cart-totals>
+            oncheckout={handleCheckout} showbutton={showButton}></c-board-cart-totals>
         </template>
       </lightning-layout-item>
     </lightning-layout>
