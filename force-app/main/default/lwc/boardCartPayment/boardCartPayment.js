@@ -22,7 +22,19 @@ export default class BoardCartPayment extends LightningElement {
 
   handlePlaceOrder() {
     /** assuming payment confirmation is good! (TODO!!) */
-    this.dispatchEvent(new CustomEvent('orderplaced'));
+    const billingAddress = {
+      billingStreet: this.street,
+      billingCity: this.city,
+      billingState: this.state,
+      billingZip: this.zip,
+      billingCountry: this.country
+    };
+
+    const orderEvent = new CustomEvent('orderplaced', {
+      detail: billingAddress
+    });
+
+    this.dispatchEvent(orderEvent);
   }
 
   handleBackButton() {

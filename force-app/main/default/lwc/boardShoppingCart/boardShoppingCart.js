@@ -212,20 +212,21 @@ export default class BoardShoppingCart extends LightningElement {
     this.showButton = !this.showButton;
   }
 
-  handleOrderPlaced() {
+  handleOrderPlaced(event) {
     /** This is simply going to upate the cart status to closed and an apex
      * trigger will handle the creating of the order and order lines.
      */
-    const cartFields = {};
-    cartFields[ID_FIELD.fieldApiName] = this.cartResult.cartHeader.Id;
-    cartFields[CART_STATUS_FIELD.fieldApiName] = 'Closed';
+    const fields = {};
+    fields[ID_FIELD.fieldApiName] = this.cartResult.cartHeader.Id;
+    fields[CART_STATUS_FIELD.fieldApiName] = 'Closed';
 
-    console.log('the fields are: ' + JSON.stringify(cartFields));
-    const orderUpdate = {
-      cartFields
+    console.log('the fields are: ' + JSON.stringify(fields));
+    console.log('with the billing address: ' + JSON.stringify(event.detail));
+    const recordInput = {
+      fields
     };
-
-    updateRecord(orderUpdate)
+    console.log('is the record Input object real? --> ' + JSON.stringify(recordInput));
+    updateRecord(recordInput)
       .then(() => {
         this.dispatchEvent(
           new ShowToastEvent({
