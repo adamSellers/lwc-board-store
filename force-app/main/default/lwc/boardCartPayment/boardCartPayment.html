@@ -16,9 +16,9 @@
       <lightning-layout-item size="12" padding="around-small">
         <span class="slds-text-title_caps">Billing Address Details</span>
       </lightning-layout-item>
-      <lightning-layout-item size="12" padding="around-small" class="slds-align_absolute-center">
-        <lighting-input type="checkbox" label="Use Shipping Details?" onchange={handleUseShippingAddress}>
-        </lighting-input>
+      <lightning-layout-item size="12" padding="around-small">
+        <lightning-input type="checkbox" label="Use Shipping Details?" onchange={handleUseShippingAddress}>
+        </lightning-input>
       </lightning-layout-item>
       <template if:false={_useDefaultShippingDetails}>
         <lightning-layout-item size="12" padding="around-small" flexibility="auto">

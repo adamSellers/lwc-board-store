@@ -1,6 +1,7 @@
 import {
   LightningElement,
-  api
+  api,
+  track
 } from 'lwc';
 
 export default class BoardCartPayment extends LightningElement {
@@ -17,7 +18,7 @@ export default class BoardCartPayment extends LightningElement {
   _state;
   _zip;
   _country;
-  _useDefaultShippingDetails = false;
+  @track _useDefaultShippingDetails = false;
 
   handlePlaceOrder() {
     /** assuming payment confirmation is good! (TODO!!) */
@@ -30,6 +31,7 @@ export default class BoardCartPayment extends LightningElement {
 
   handleUseShippingAddress() {
     this._useDefaultShippingDetails = !this._useDefaultShippingDetails;
+    console.log('shipping defaults flag is: ' + this._useDefaultShippingDetails);
     if (this._useDefaultShippingDetails) {
       this._street = this.street;
       this._city = this.city;
