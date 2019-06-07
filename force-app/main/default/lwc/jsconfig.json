@@ -3,40 +3,40 @@
         "experimentalDecorators": true,
         "baseUrl": ".",
         "paths": {
-            "c/board-card": [
+            "c/boardCard": [
                 "boardCard/boardCard.js"
             ],
-            "c/board-cart-header": [
+            "c/boardCartHeader": [
                 "boardCartHeader/boardCartHeader.js"
             ],
-            "c/board-cart-payment": [
+            "c/boardCartPayment": [
                 "boardCartPayment/boardCartPayment.js"
             ],
-            "c/board-cart-shipping": [
+            "c/boardCartShipping": [
                 "boardCartShipping/boardCartShipping.js"
             ],
-            "c/board-cart-totals": [
+            "c/boardCartTotals": [
                 "boardCartTotals/boardCartTotals.js"
             ],
-            "c/board-filter-component": [
+            "c/boardFilterComponent": [
                 "boardFilterComponent/boardFilterComponent.js"
             ],
-            "c/board-filters": [
+            "c/boardFilters": [
                 "boardFilters/boardFilters.js"
             ],
-            "c/board-paginator": [
+            "c/boardPaginator": [
                 "boardPaginator/boardPaginator.js"
             ],
-            "c/board-shopping-cart": [
+            "c/boardShoppingCart": [
                 "boardShoppingCart/boardShoppingCart.js"
             ],
-            "c/board-shopping-cart-line": [
+            "c/boardShoppingCartLine": [
                 "boardShoppingCartLine/boardShoppingCartLine.js"
             ],
-            "c/board-tile": [
+            "c/boardTile": [
                 "boardTile/boardTile.js"
             ],
-            "c/board-tile-list": [
+            "c/boardTileList": [
                 "boardTileList/boardTileList.js"
             ],
             "c/placeholder": [
@@ -50,5 +50,10 @@
     "include": [
         "**/*",
         "../../../../.sfdx/typings/lwc/**/*.d.ts"
-    ]
+    ],
+    "typeAcquisition": {
+        "include": [
+            "jest"
+        ]
+    }
 }
