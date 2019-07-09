@@ -146,6 +146,7 @@ export default class BoardShoppingCart extends LightningElement {
       })
       .then((result) => {
         this.cartResult = result;
+        // eslint-disable-next-line no-console
         console.log('apex refreshed! cart details are: ' + JSON.stringify(this.cartResult));
       })
       .catch(error => {
@@ -212,7 +213,7 @@ export default class BoardShoppingCart extends LightningElement {
     this.showButton = !this.showButton;
   }
 
-  handleOrderPlaced(event) {
+  handleOrderPlaced() {
     /** This is simply going to upate the cart status to closed and an apex
      * trigger will handle the creating of the order and order lines.
      */
