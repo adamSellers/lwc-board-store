@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Post_Code_Zip__c</fullName>
+    <businessStatus>Active</businessStatus>
+    <description>The billing details are entered by the user during the shopping cart process</description>
+    <externalId>false</externalId>
+    <label>Billing Post Code / Zip</label>
+    <length>10</length>
+    <required>false</required>
+    <securityClassification>Internal</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -2,6 +2,7 @@
   <lightning-card title="Shopping Experience" icon-name="utility:cart">
     <lightning-layout horizontal-align="space" multiple-rows>
       <lightning-layout-item size="12" padding="horizontal-small">
+        <!-- Start Shipping Details -->
         <template if:true={shippingDetails}>
           <lightning-layout horizontal-align="space">
             <lightning-layout-item>
@@ -14,6 +15,8 @@
             </lightning-layout-item>
           </lightning-layout>
         </template>
+        <!-- Shipping details end -->
+        <!-- Start Payment Screen -->
         <template if:true={processPayment}>
           <lightning-layout horizontal-align="space">
             <lightning-layout-item>
@@ -25,6 +28,8 @@
             </lightning-layout-item>
           </lightning-layout>
         </template>
+        <!-- End payment screen -->
+        <!-- Shopping Cart -->
         <template if:true={shoppingCart}>
           <template if:true={cartResult}>
             <lightning-layout horizontal-align="spread" pull-to-boundary="small" multiple-rows>
@@ -47,13 +52,16 @@
             </template>
           </template>
         </template>
+        <!-- End shopping cart -->
       </lightning-layout-item>
       <lightning-layout-item padding="horizontal-small" size="12">
+        <!-- Start Cart Totals -->
         <template if:true={cartResult}>
           <c-board-cart-totals total={cartResult.cartHeader.Total_Cart__c}
             subtotal={cartResult.cartHeader.Cart_Subtotal__c} tax={cartResult.cartHeader.Tax_Total__c}
             oncheckout={handleCheckout} showbutton={showButton}></c-board-cart-totals>
         </template>
+        <!-- End cart totals -->
       </lightning-layout-item>
     </lightning-layout>
   </lightning-card>
