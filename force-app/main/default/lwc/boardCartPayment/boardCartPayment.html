@@ -22,20 +22,19 @@
       </lightning-layout-item>
       <template if:false={_useDefaultShippingDetails}>
         <lightning-layout-item size="12" padding="around-small" flexibility="auto">
-          <lightning-input label="Street" value={_street} onchange={handleUpdateStreet}>
-          </lightning-input>
+          <lightning-input label="Street" value={_street} name="billingStreet" onchange={updateBillingStreet}></lightning-input>
         </lightning-layout-item>
         <lightning-layout-item size="6" padding="around-small" flexibility="auto">
-          <lightning-input label="City" value={_city} onchange={handleUpdateCity}></lightning-input>
+          <lightning-input label="City" value={_city} name="billingCity" onchange={updateBillingStreet} ></lightning-input>
         </lightning-layout-item>
         <lightning-layout-item size="6" padding="around-small" flexibility="auto">
-          <lightning-input label="State" value={_state} onchange={handleUpdateState}></lightning-input>
+          <lightning-input label="State" value={_state} name="billingState" onchange={updateBillingStreet}></lightning-input>
         </lightning-layout-item>
         <lightning-layout-item size="6" padding="around-small" flexibility="auto">
-          <lightning-input label="Zip" value={_zip} onchange={handleUpdateZip}></lightning-input>
+          <lightning-input label="Zip" value={_zip} name="billingZip" onchange={updateBillingStreet}></lightning-input>
         </lightning-layout-item>
         <lightning-layout-item size="6" padding="around-small" flexibility="auto">
-          <lightning-input label="Country" value={_country} onchange={handleUpdateCountry}></lightning-input>
+          <lightning-input label="Country" value={_country} name="billingCountry" onchange={updateBillingStreet}></lightning-input>
         </lightning-layout-item>
       </template>
       <lightning-layout-item size="12" padding="around-small" flexibility="auto" class="slds-text-align_right">

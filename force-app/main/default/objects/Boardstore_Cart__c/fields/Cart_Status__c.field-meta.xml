@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Cart_Status__c</fullName>
+    <businessStatus>Active</businessStatus>
     <description>The status of the cart is used to apply logic relating to the progress of each cart, like abandonment for example.</description>
     <externalId>false</externalId>
     <label>Cart Status</label>
     <required>false</required>
+    <securityClassification>Internal</securityClassification>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
@@ -14,7 +16,7 @@
             <sorted>false</sorted>
             <value>
                 <fullName>Open</fullName>
-                <default>false</default>
+                <default>true</default>
                 <label>Open</label>
             </value>
             <value>
@@ -31,6 +33,16 @@
                 <fullName>Cancelled</fullName>
                 <default>false</default>
                 <label>Cancelled</label>
+            </value>
+            <value>
+                <fullName>Order - Processing</fullName>
+                <default>false</default>
+                <label>Order - Processing</label>
+            </value>
+            <value>
+                <fullName>Order - Shipped</fullName>
+                <default>false</default>
+                <label>Order - Shipped</label>
             </value>
         </valueSetDefinition>
     </valueSet>

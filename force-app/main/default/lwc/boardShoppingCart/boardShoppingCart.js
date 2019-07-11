@@ -39,6 +39,11 @@ import SHIPPING_CITY_FIELD from '@salesforce/schema/Boardstore_Cart__c.Shipping_
 import SHIPPING_STATE_FIELD from '@salesforce/schema/Boardstore_Cart__c.Shipping_State__c';
 import SHIPPING_ZIP_FIELD from '@salesforce/schema/Boardstore_Cart__c.Shipping_Post_Code_Zip__c';
 import SHIPPING_COUNTRY_FIELD from '@salesforce/schema/Boardstore_Cart__c.Shipping_Country__c';
+import BILLING_STREET_FIELD from '@salesforce/schema/Boardstore_Cart__c.Billing_Street__c';
+import BILLING_CITY_FIELD from '@salesforce/schema/Boardstore_Cart__c.Billing_City__c';
+import BILLING_STATE_FIELD from '@salesforce/schema/Boardstore_Cart__c.Billing_State__c';
+import BILLING_ZIP_FIELD from '@salesforce/schema/Boardstore_Cart__c.Billing_Post_Code_Zip__c';
+import BILLING_COUNTRY_FIELD from '@salesforce/schema/Boardstore_Cart__c.Billing_Country__c';
 import SHIPPING_CONFRIMED_FIELD from '@salesforce/schema/Boardstore_Cart__c.Shipping_Details_Confirmed__c';
 import ID_FIELD from '@salesforce/schema/Boardstore_Cart__c.Id';
 import CART_STATUS_FIELD from '@salesforce/schema/Boardstore_Cart__c.Cart_Status__c';
@@ -184,8 +189,10 @@ export default class BoardShoppingCart extends LightningElement {
         );
 
         /** set the payment details and shipping flags to display the next component */
+        this.performImperativeApexRefresh();
         this.shippingDetails = false;
         this.processPayment = true;
+
       })
       .catch(error => {
         this.dispatchEvent(
@@ -213,13 +220,20 @@ export default class BoardShoppingCart extends LightningElement {
     this.showButton = !this.showButton;
   }
 
-  handleOrderPlaced() {
-    /** This is simply going to upate the cart status to closed and an apex
-     * trigger will handle the creating of the order and order lines.
+  handleOrderPlaced(evt) {
+    /** This will update the shopping cart status to it's first order phase. 
+     * The shopping cart and the order object are the same thing, different parts of the business
+     * should have access to these records. // TODO - implement record types here if anyone ever
+     * uses this in anger ;)
      */
     const fields = {};
     fields[ID_FIELD.fieldApiName] = this.cartResult.cartHeader.Id;
-    fields[CART_STATUS_FIELD.fieldApiName] = 'Closed';
+    fields[CART_STATUS_FIELD.fieldApiName] = 'Order - Processing';
+    fields[BILLING_STREET_FIELD.fieldApiName] = evt.detail.billingStreet;
+    fields[BILLING_CITY_FIELD.fieldApiName] = evt.detail.billingCity;
+    fields[BILLING_STATE_FIELD.fieldApiName] = evt.detail.billingState;
+    fields[BILLING_ZIP_FIELD.fieldApiName] = evt.detail.billingZip;
+    fields[BILLING_COUNTRY_FIELD.fieldApiName] = evt.detail.billingCountry;
 
     const recordInput = {
       fields
