@@ -15,7 +15,7 @@ git clone https://github.com/adamSellers/lwc-board-store.git && cd lwc-board-sto
 Next, create yourself a shiny new scratch org in Salesforce DX
 
 ````bash
-sfdx force:org:create -f config/project-scratch.json -a boards -s
+sfdx force:org:create -f config/project-scratch-def.json -a boards -s
 ````
 
 Push the source
