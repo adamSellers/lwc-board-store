@@ -56,7 +56,7 @@ export default class BoardCartPayment extends LightningElement {
     }
   }
 
-  updateBillingStreet(event) {
+  updateBillingDetails(event) {
     // switch statement to catch all fields in the form
     switch(event.target.name) {
       case 'billingStreet':
