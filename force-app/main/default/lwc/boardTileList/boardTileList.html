@@ -1,41 +1,41 @@
 <template>
   <div class="slds-card slds-p-around_x-small">
-    <template if:true="{searchBarIsVisible}">
+    <template if:true={searchBarIsVisible}>
       <lightning-input
         label="Enter Brand Name"
         type="text"
-        onchange="{handleSearchKeyChange}"
+        onchange={handleSearchKeyChange}
         class="search-bar"
       ></lightning-input>
     </template>
-    <template if:true="{boards.data}">
-      <template if:true="{boards.data.records.length}">
+    <template if:true={boards.data}>
+      <template if:true={boards.data.records.length}>
         <div class="content">
-          <template for:each="{boards.data.records}" for:item="board">
+          <template for:each={boards.data.records} for:item="board">
             <c-board-tile
-              key="{board.Id}"
-              board="{board}"
-              draggable="{tilesAreDraggable}"
-              onselected="{handleBoardSelected}"
+              key={board.Id}
+              board={board}
+              draggable={tilesAreDraggable}
+              onselected={handleBoardSelected}
               class="slds-m-around_small"
             ></c-board-tile>
           </template>
         </div>
         <c-board-paginator
-          page-number="{pageNumber}"
-          page-size="{boards.data.pageSize}"
-          total-item-count="{boards.data.totalItemCount}"
-          onprevious="{handlePreviousPage}"
-          onnext="{handleNextPage}"
+          page-number={pageNumber}
+          page-size={boards.data.pageSize}
+          total-item-count={boards.data.totalItemCount}
+          onprevious={handlePreviousPage}
+          onnext={handleNextPage}
         ></c-board-paginator>
       </template>
-      <template if:false="{boards.data.records.length}">
+      <template if:false={boards.data.records.length}>
         <c-placeholder
           message="There are no products matching your current selection"
         ></c-placeholder>
       </template>
     </template>
-    <template if:true="{boards.error}">
+    <template if:true={boards.error}>
       there's an error
       <!-- <c-inline-message
         errors={boards.error}
