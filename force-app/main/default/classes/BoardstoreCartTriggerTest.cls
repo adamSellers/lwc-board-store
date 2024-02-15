@@ -1,23 +1,6 @@
 /**
- * This class contains unit tests for validating the behavior of Apex classes
- * and triggers.
- *
- * Unit tests are class methods that verify whether a particular piece
- * of code is working properly. Unit test methods take no arguments,
- * commit no data to the database, and are flagged with the testMethod
- * keyword in the method definition.
- *
- * All test methods in an org are executed whenever Apex code is deployed
- * to a production org to confirm correctness, ensure code
- * coverage, and prevent regressions. All Apex classes are
- * required to have at least 75% code coverage in order to be deployed
- * to a production org. In addition, all triggers must have some code coverage.
+ * Test Class to test the BoardstoreCartTrigger and BoardstoreCartLineTrigger
  * 
- * The @isTest class annotation indicates this class only contains test
- * methods. Classes defined with the @isTest annotation do not count against
- * the org size limit for all Apex scripts.
- *
- * See the Apex Language Reference for more information about Testing and Code Coverage.
  */
 @isTest
 private class BoardstoreCartTriggerTest {
@@ -50,6 +33,47 @@ private class BoardstoreCartTriggerTest {
 
             insert cart;
             System.assertEquals(15.00, [SELECT User_Tax_Rate__c FROM Boardstore_Cart__c WHERE Id = :cart.Id].User_Tax_Rate__c);
+        }
+    }
+
+    @isTest
+    static void lineUpdateResetsTax() {
+        // create US user
+        String uniqueUserName = 'standarduser' + DateTime.now().getTime() + '@testorg.com';
+        // This code runs as the system user
+        Profile p = [SELECT Id FROM Profile WHERE Name='Standard User'];
+        User u = new User(Alias = 'standt', Email='standarduser@testorg.com',
+        EmailEncodingKey='UTF-8', LastName='Testing', LanguageLocaleKey='en_US',
+        LocaleSidKey='en_US', ProfileId = p.Id,
+        TimeZoneSidKey='America/Los_Angeles',
+        UserName=uniqueUserName);
+
+        System.runAs(u) {
+        // create a cart record
+        Boardstore_Cart__c cart = new Boardstore_Cart__c();
+        cart.Cart_Status__c = 'Open';
+        insert cart;
+        
+        // create a board
+        Board__c board = new Board__c();
+        board.Name = 'Test Board';
+        board.Price__c = 100.00;
+        insert board;
+
+        // insert a line
+        Boardstore_Cart_Line__c line = new Boardstore_Cart_Line__c();
+        line.Board__c = board.Id;
+        line.Quantity__c = 1;
+        line.Boardstore_Cart__c = cart.Id;
+        line.Price__c = board.Price__c;
+        insert line;
+
+        // update the line to trigger the line update
+        line.Quantity__c = 2;
+        update line;
+        
+        // check that the tax rate is 15%
+        System.assertEquals(15.00, [SELECT User_Tax_Rate__c FROM Boardstore_Cart__c WHERE Id = :cart.Id].User_Tax_Rate__c);
         }
     }
 }

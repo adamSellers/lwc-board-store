@@ -1,8 +1,7 @@
-trigger BoardstoreCartTrigger on Boardstore_Cart__c (before insert) {
-  // Before insert, update the User_Tax_Rate__c field with the tax
+trigger BoardstoreCartTrigger on Boardstore_Cart__c (before insert , before update) {
+  // Update the User_Tax_Rate__c field with the tax
   // rate found from the Tax_Rate__mdt tax rates type. 
 
-  if (Trigger.isBefore) {
     String localeString = UserInfo.getLocale();
     Double localTaxRate;
     
@@ -16,5 +15,4 @@ trigger BoardstoreCartTrigger on Boardstore_Cart__c (before insert) {
     for (Boardstore_Cart__c c : Trigger.New) {
       c.User_Tax_Rate__c = localTaxRate;
     }
-  }
 }
