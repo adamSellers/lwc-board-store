@@ -39,10 +39,7 @@ public with sharing class BoardCartController {
         BoardCartResult cartResult = new BoardCartResult();
         cartResult.cartHeader = currentCarts[0];
         System.debug('cart header returned: ' + cartResult.cartHeader);
-        // // find the tax rate from the custom metadata types based on the user's locale
-        // String localeString = UserInfo.getLocale();
-        // cartResult.localTaxRate = [SELECT Tax_Rate__c from Tax_Rate__mdt WHERE DeveloperName =: localeString LIMIT 1].Tax_Rate__c;
-        
+
         // now check all the lines in that cart
         cartResult.cartLines = [SELECT Id, Name, Board__r.Name, Price__c, Quantity__c
                                 FROM Boardstore_Cart_Line__c
