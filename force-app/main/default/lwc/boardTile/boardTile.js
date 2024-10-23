@@ -26,6 +26,7 @@ export default class BoardTile extends LightningElement {
     set board(value) {
         this._board = value;
         this.imageName = value.Image_Name__c;
+<<<<<<< HEAD
         this.thumbUrl = boardImages + "/images/thumbs80/" + this.imageName;
         this.name = value.Name;
         this.price = value.Price__c;
@@ -48,6 +49,28 @@ export default class BoardTile extends LightningElement {
         this.dispatchEvent(selectedBoard);
     }
 
+=======
+        this.thumbUrl =
+            boardImages + "/boardImages/images/thumbs80/" + this.imageName;
+        this.name = value.Name;
+        this.price = value.Price__c;
+    }
+
+    /* Board__c values to display */
+    @track pictureUrl;
+    @track name;
+    @track price;
+
+    handleBoardSelected() {
+        /* emit a custom event that identifies the record clicked on */
+        const selectedBoard = new CustomEvent("selected", {
+            detail: this.board.Id,
+        });
+
+        this.dispatchEvent(selectedBoard);
+    }
+
+>>>>>>> origin/main
     handleDragStart(event) {
         event.dataTransfer.setData("board", JSON.stringify(this.board));
     }

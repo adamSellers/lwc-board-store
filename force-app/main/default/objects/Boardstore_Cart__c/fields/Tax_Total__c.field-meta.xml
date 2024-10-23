@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Tax_Total__c</fullName>
     <externalId>false</externalId>
-    <formula>ROUND(( Cart_Subtotal__c *  (1/User_Tax_Rate__c) ),2)</formula>
+    <formula>ROUND(( Cart_Subtotal__c * (User_Tax_Rate__c/100) ),2)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Tax Total</label>
     <precision>18</precision>

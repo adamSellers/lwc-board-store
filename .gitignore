@@ -4,6 +4,7 @@
 # don't push the stuff that come from the source:pull we don't want
 /force-app/main/default/profiles
 /force-app/main/default/settings
+/force-app/main/default/.DS_Store
 
 # remove this later, for the examples
 /force-app/main/default/lwc/helloBinding
