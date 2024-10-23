@@ -8,48 +8,47 @@
  * Adam Sellers
  * asellers@salesforce.com
  */
-import {
-  LightningElement,
-  api,
-  track
-} from 'lwc';
+import { LightningElement, api, track } from "lwc";
 /* grab the images from static resources */
-import boardImages from '@salesforce/resourceUrl/boardImages';
+import boardImages from "@salesforce/resourceUrl/boardImages";
 
 export default class BoardTile extends LightningElement {
-  /* Is the single tile draggable */
-  @api draggable
+    /* Is the single tile draggable */
+    @api draggable;
 
-  /* the board record */
-  _board;
+    /* the board record */
+    _board;
 
-  @api get board() {
-    return this._board;
-  }
+    @api get board() {
+        return this._board;
+    }
 
-  set board(value) {
-    this._board = value;
-    this.imageName = value.Image_Name__c;
-    this.thumbUrl = boardImages + '/images/thumbs80/' + this.imageName;
-    this.name = value.Name;
-    this.price = value.Price__c;
-  }
+    set board(value) {
+        this._board = value;
+        this.imageName = value.Image_Name__c;
+        this.thumbUrl = boardImages + "/images/thumbs80/" + this.imageName;
+        this.name = value.Name;
+        this.price = value.Price__c;
 
-  /* Board__c values to display */
-  @track pictureUrl;
-  @track name;
-  @track price;
+        // some debugging here
+        console.log(`thumbnail url for ${this.name} is ${this.thumbUrl}`);
+    }
 
-  handleBoardSelected() {
-    /* emit a custom event that identifies the record clicked on */
-    const selectedBoard = new CustomEvent('selected', {
-      detail: this.board.Id
-    });
+    /* Board__c values to display */
+    @track pictureUrl;
+    @track name;
+    @track price;
 
-    this.dispatchEvent(selectedBoard);
-  }
+    handleBoardSelected() {
+        /* emit a custom event that identifies the record clicked on */
+        const selectedBoard = new CustomEvent("selected", {
+            detail: this.board.Id,
+        });
 
-  handleDragStart(event) {
-    event.dataTransfer.setData('board', JSON.stringify(this.board));
-  }
+        this.dispatchEvent(selectedBoard);
+    }
+
+    handleDragStart(event) {
+        event.dataTransfer.setData("board", JSON.stringify(this.board));
+    }
 }
