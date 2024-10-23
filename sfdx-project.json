@@ -3,9 +3,31 @@
     {
       "path": "force-app",
       "default": true
+    },
+    {
+      "path": "./force-app/main/default",
+      "package": "2GP Board Store",
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "default": false,
+      "versionDescription": "The 2GP Version of the package test"
+    },
+    {
+      "path": "./force-app",
+      "package": "2nd 2GP Boards",
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "default": false,
+      "versionDescription": "2nd go at board store"
     }
   ],
-  "namespace": "",
-  "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "45.0"
+  "namespace": "adams_namespace",
+  "sfdcLoginUrl": "https://login.ycd0.tab-shanghai-test.com",
+  "sourceApiVersion": "45.0",
+  "packageAliases": {
+    "2GP Board Store": "0HoC1000000009hKAA",
+    "2GP Board Store@0.1.0-1": "04tC100000001SLIAY",
+    "2nd 2GP Boards": "0HoC100000000BJKAY",
+    "2nd 2GP Boards@0.1.0-1": "04tC100000001TxIAI"
+  }
 }
