@@ -1,7 +1,3 @@
 {
-<<<<<<< HEAD
-  "target-dev-hub": "asellers@package.demo"
-=======
-  "target-org": "china"
->>>>>>> origin/main
+    "target-dev-hub": "asellers@package.demo"
 }

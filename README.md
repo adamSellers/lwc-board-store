@@ -8,42 +8,42 @@ To build, do the following:-
 
 First, grab the repo:
 
-````bash
+```bash
 git clone https://github.com/adamSellers/lwc-board-store.git && cd lwc-board-store
-````
+```
 
 Next, create yourself a shiny new scratch org in Salesforce DX
 
-````bash
-sfdx force:org:create -f config/project-scratch-def.json -a boards -s
-````
+```bash
+sfdx org create scratch -f config/project-scratch-def.json -a boards -s
+```
 
 Push the source
 
-````bash
-sfdx force:source:push
-````
+```bash
+sfdx project deploy start
+```
 
 Update the permissions
 
-````bash
-sfdx force:user:permset:assign -n board_admin
-````
+```bash
+sfdx org assign permset -n board_admin
+```
 
 Add the data
 
-````bash
-sfdx force:data:tree:import --plan boardData/board-export-Board__c-plan.json
-````
+```bash
+sfdx data import tree --plan boardData/board-export-Board__c-plan.json
+```
 
 Open the org and enjoy
 
-````bash
-sfdx force:org:open
-````
+```bash
+sfdx org open
+```
 
 **Optional**
-Add a custom metadata type entry to the Tax_Rate__mdt object that specifies a tax rate and/or locale that you're interested in. Otherwise, the system will default to 10%.
+Add a custom metadata type entry to the Tax_Rate\_\_mdt object that specifies a tax rate and/or locale that you're interested in. Otherwise, the system will default to 10%.
 
 ## Resources
 
