@@ -26,7 +26,8 @@ export default class BoardTile extends LightningElement {
     set board(value) {
         this._board = value;
         this.imageName = value.Image_Name__c;
-        this.thumbUrl = boardImages + "/images/thumbs80/" + this.imageName;
+        this.thumbUrl =
+            boardImages + "/boardImages/images/thumbs80/" + this.imageName;
         this.name = value.Name;
         this.price = value.Price__c;
 
