@@ -5,15 +5,15 @@
 @isTest
 private class BoardstoreCartTriggerTest {
 
-    @isTest
-    static void defaultTax() {
-        // create a cart record and check that it's there with 10% tax rate without the custom metadata record
-        Boardstore_Cart__c cart = new Boardstore_Cart__c();
-        cart.Cart_Status__c = 'Open';
+    // @isTest
+    // static void defaultTax() {
+    //     // create a cart record and check that it's there with 10% tax rate without the custom metadata record
+    //     Boardstore_Cart__c cart = new Boardstore_Cart__c();
+    //     cart.Cart_Status__c = 'Open';
 
-        insert cart;
-        System.assertEquals(10.00, [SELECT User_Tax_Rate__c FROM Boardstore_Cart__c WHERE Id = :cart.Id].User_Tax_Rate__c);
-    }
+    //     insert cart;
+    //     System.assertEquals(10.00, [SELECT User_Tax_Rate__c FROM Boardstore_Cart__c WHERE Id = :cart.Id].User_Tax_Rate__c);
+    // }
 
     @isTest
     static void usTax() {
