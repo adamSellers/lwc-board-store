@@ -27,7 +27,7 @@ sfdx project deploy start
 Update the permissions
 
 ```bash
-sfdx org assign permset -n board_admin -b {userName}
+sfdx org assign permset -n board_admin # add -b {userName} if deploying to sandboxes etc..
 ```
 
 Add the data
